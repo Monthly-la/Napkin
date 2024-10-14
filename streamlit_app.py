@@ -30,7 +30,7 @@ def process_files(uploaded_files):
         if uploaded_file is not None:
             bank_name = 'GenericBank'  # Assuming bank name can be inferred or is generic
             byte_data = uploaded_file.getvalue()  # Get byte data from uploaded file
-            extracted_text = extract_data_from_pdf(byte_data, bank_name)
+            edo_de_cuenta = extract_data_from_pdf(byte_data, bank_name)
             edo_de_cuenta_list = edo_de_cuenta.split("\n")
             print("1) Lectura de Estado de Cuenta")
             
