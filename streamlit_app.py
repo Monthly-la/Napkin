@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import os
 from datetime import datetime
 import io
+import openai
 
 
 def extract_data_from_pdf(byte_data, bank_name):
