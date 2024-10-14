@@ -3,4 +3,3 @@ pdfplumber
 pandas
 matplotlib
 openai
-time
