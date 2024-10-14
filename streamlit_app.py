@@ -26,7 +26,7 @@ def extract_data_from_pdf(byte_data, bank_name):
 
 
 def process_files(uploaded_files):
-    final_dataframe = pd.DataFrame() = pd.DataFrame()
+    final_dataframe = pd.DataFrame()
     for uploaded_file in uploaded_files:
 
         if uploaded_file is not None:
