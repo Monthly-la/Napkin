@@ -4,26 +4,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 from datetime import datetime
+import io
 
-def extract_data_from_pdf(pdf_file, bank_name):
+
+def extract_data_from_pdf(byte_data, bank_name):
     """
     Extracts all text from a PDF file using pdfplumber.
-
     Args:
-    pdf_path (str): Path to the PDF file.
-
+    byte_data (bytes): Byte data from the uploaded PDF file.
     Returns:
     str: Extracted text from the PDF.
     """
     extracted_text = ""
-    with pdfplumber.open(pdf_file) as pdf:
+    with pdfplumber.open(io.BytesIO(byte_data)) as pdf:
         for page in pdf.pages:
             extracted_text += page.extract_text() + "\n"  # Extract and add new line
     return extracted_text
     
-    
-
-
 
 
 
@@ -31,10 +28,9 @@ def process_files(uploaded_files):
     all_data = pd.DataFrame()
     for uploaded_file in uploaded_files:
         if uploaded_file is not None:
-            # Assuming bank name can be inferred from file name or another method
-            bank_name = 'GenericBank'
-            bytes_data = uploaded_file.read()
-            edo_de_cuenta = extract_data_from_pdf(bytes_data, bank_name)
+            bank_name = 'GenericBank'  # Assuming bank name can be inferred or is generic
+            byte_data = uploaded_file.getvalue()  # Get byte data from uploaded file
+            extracted_text = extract_data_from_pdf(byte_data, bank_name)
             edo_de_cuenta_list = edo_de_cuenta.split("\n")
             print("1) Lectura de Estado de Cuenta")
             
