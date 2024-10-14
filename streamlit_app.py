@@ -8,6 +8,7 @@ import io
 import openai
 import time
 
+
 def extract_data_from_pdf(byte_data, bank_name):
     """
     Extracts all text from a PDF file using pdfplumber.
@@ -28,6 +29,8 @@ def extract_data_from_pdf(byte_data, bank_name):
 def process_files(uploaded_files):
     all_data = pd.DataFrame()
     for uploaded_file in uploaded_files:
+        time.clock = time.time
+        tic = time.clock()
         if uploaded_file is not None:
             bank_name = 'GenericBank'  # Assuming bank name can be inferred or is generic
             byte_data = uploaded_file.getvalue()  # Get byte data from uploaded file
