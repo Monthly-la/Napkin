@@ -6,7 +6,6 @@ import os
 from datetime import datetime
 import io
 import openai
-import time
 
 
 def extract_data_from_pdf(byte_data, bank_name):
@@ -29,8 +28,7 @@ def extract_data_from_pdf(byte_data, bank_name):
 def process_files(uploaded_files):
     all_data = pd.DataFrame()
     for uploaded_file in uploaded_files:
-        time.clock = time.time
-        tic = time.clock()
+
         if uploaded_file is not None:
             bank_name = 'GenericBank'  # Assuming bank name can be inferred or is generic
             byte_data = uploaded_file.getvalue()  # Get byte data from uploaded file
@@ -130,8 +128,6 @@ def process_files(uploaded_files):
             
             #Calcular Acumulado
             print("7) Tabla Final")
-            toc = time.clock()
-            print("Tiempo de Procesamiento: " + str(round(toc - tic,2)) + "s")
             
             # Concatenate the DataFrame into the final DataFrame
             final_dataframe = pd.concat([final_dataframe, estado_de_cuenta_movimientos_df], ignore_index=True)
