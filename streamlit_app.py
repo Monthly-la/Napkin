@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 import io
 import openai
-
+import time
 
 def extract_data_from_pdf(byte_data, bank_name):
     """
