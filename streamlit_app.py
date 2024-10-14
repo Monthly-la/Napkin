@@ -21,7 +21,7 @@ def extract_data_from_pdf(pdf_file, bank_name):
             extracted_text += page.extract_text() + "\n"  # Extract and add new line
     return extracted_text
     
-    edo_de_cuenta = extract_text_from_pdf(pdf_path)
+    edo_de_cuenta = extract_text_from_pdf(pdf_file)
     edo_de_cuenta_list = edo_de_cuenta.split("\n")
     print("1) Lectura de Estado de Cuenta")
     
