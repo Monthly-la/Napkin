@@ -26,7 +26,7 @@ def extract_data_from_pdf(byte_data, bank_name):
 
 
 def process_files(uploaded_files):
-    all_data = pd.DataFrame()
+    final_dataframe = pd.DataFrame() = pd.DataFrame()
     for uploaded_file in uploaded_files:
 
         if uploaded_file is not None:
@@ -135,8 +135,7 @@ def process_files(uploaded_files):
             final_dataframe = final_dataframe.sort_values(by = ["Fecha","Concepto"])
             final_dataframe["Monto Acumulado"] = final_dataframe["Monto"].cumsum()
             final_dataframe = final_dataframe[["Fecha", "Concepto", "Comercio", "Monto", "Monto Acumulado"]]
-            all_data = pd.concat([all_data, final_dataframe], ignore_index=True)
-    return all_data
+    return final_dataframe
 
 def plot_line_graph(df):
     plt.figure(figsize=(10, 5))
