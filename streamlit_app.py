@@ -190,8 +190,10 @@ def load_navbar(user_name):
         }}
         .search-container {{
             display: inline-block;
+            color: #8E9CB0;
         }}
         input[type="text"] {{
+            color: #8E9CB0;
             padding: 7px;
             font-size: 14px;
             border: none;
