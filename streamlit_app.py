@@ -158,7 +158,72 @@ def process_files(uploaded_files):
 
 
 
+def load_navbar(user_name):
+    navbar_html = f"""
+    <style>
+        .navbar {{
+            width: 100%;
+            background-color: #f8f9fc;
+            overflow: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+        .navbar a {{
+            float: left;
+            padding: 12px;
+            color: black;
+            text-decoration: none;
+            font-size: 17px;
+            width: 150px; /* Define width here */
+            text-align: center;
+        }}
+        .navbar a:hover {{
+            background-color: #ddd;
+        }}
+        .search-container {{
+            display: inline-block;
+        }}
+        input[type=text] {{
+            padding: 7px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+            width: 300px; /* width of the search bar */
+        }}
+        .search-container button {{
+            float: right;
+            padding: 7px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }}
+        .search-container button:hover {{
+            background: #ccc;
+        }}
+    </style>
 
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <div class="search-container">
+            <input type="text" placeholder="Search..">
+        </div>
+        <a href="#notification">Notifications</a>
+        <div>
+            <a href="#config">Configuration</a>
+            <a href="#">{user_name}</a>
+        </div>
+    </div>
+    """
+    st.markdown(navbar_html, unsafe_allow_html=True)
+
+# Replace 'User Name' with a dynamic user name if you have that functionality
+load_navbar("User Name")
 
 # Streamlit app
 col1, colA, col2, colB, col3 = st.columns([10,1,9,1,9])
