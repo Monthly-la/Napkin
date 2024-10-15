@@ -291,7 +291,7 @@ st.markdown("")
 st.markdown("")
 
 # Streamlit app
-col1, colA, col2, colB, col3 = st.columns([10,1,9,1,9])
+col1, colA, col2, colB, col3 = st.columns([8,1,9,1,9])
 with col1:  
     
     uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
