@@ -311,8 +311,9 @@ if 'data' in st.session_state and not st.session_state.data.empty:
     if st.sidebar.button('Generate Graphs'):
         st.markdown("")
         with col2:
-            df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
-            df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
+            dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
+            values_js = edited_data['Monto Acumulado'].tolist()
+
 
             chart_code = f"""
             <!DOCTYPE html>
@@ -338,10 +339,10 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     var myChart = new Chart(ctx, {{
                         type: 'line',
                         data: {{
-                            labels: {list(edited_data["Fecha"])},
+                            labels: {dates_js},
                             datasets: [{{
                                 label: 'Monto Acumulado',
-                                data: {list(edited_data["Monto Acumulado"])},
+                                data: {values_js},
                                 fill: true,
                                 backgroundColor: 'rgba(78, 115, 223, 0.1)',
                                 borderColor: 'rgb(78, 115, 223)',
@@ -380,6 +381,9 @@ if 'data' in st.session_state and not st.session_state.data.empty:
             html(chart_code, height=500)
 
         with col3:
+            df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
+            df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
+            
             chart_code = """
             <!DOCTYPE html>
             <html lang="en">
