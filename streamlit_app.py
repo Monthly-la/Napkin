@@ -247,10 +247,9 @@ def load_navbar(user_name):
     </style>
 
     <div class="navbar">
-        <a href="#home">Home</a>
         <div class="search-container">
-            <input type="text" placeholder="Search...">
-            <button type="submit">Search</button>
+            <input type="text" placeholder="Search">
+            <button type="submit">🔎 Search</button>
         </div>
         <div class="dropdown">
             <button class="dropbtn">{user_name} &#9662;</button>
