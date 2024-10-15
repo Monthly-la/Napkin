@@ -179,7 +179,7 @@ def load_navbar(user_name):
         }}
         .navbar a, .dropdown-content a {{
             padding: 12px;
-            color: white;
+            color: #66707E;
             text-decoration: none;
             font-size: 14px;
             text-align: center;
