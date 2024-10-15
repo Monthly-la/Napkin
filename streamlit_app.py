@@ -163,7 +163,7 @@ if uploaded_files:
     if st.button('Process Statements'):
         if not processed_data.empty:
             st.write('Processed Data', processed_data)
-            st.bar_chart(processed_data.groupby('Concepto')['Monto'].sum().sort_values(), x='Comercio', y="Monto")
+            st.bar_chart(processed_data, x='Comercio', y="Monto")
             st.line_chart(processed_data[["Monto Acumulado", "Fecha"]])
 
         else:
