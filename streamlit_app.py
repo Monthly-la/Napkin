@@ -284,9 +284,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Replace 'User Name' with a dynamic user name if you have that functionality
-# Replace 'https://via.placeholder.com/150' with the actual URL of the user's profile image
-load_navbar("User Name", "https://via.placeholder.com/150")
+load_navbar("User Name", "https://media.licdn.com/dms/image/v2/D5603AQHuQMpgsshaQA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725653082255?e=1734566400&v=beta&t=ElSClXmLUMGHlxymSVNBc1lctfPPIM1H2Hc5ltzmcAc")
 
 st.markdown("")
 st.markdown("")
