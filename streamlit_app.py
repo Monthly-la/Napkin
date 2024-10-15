@@ -313,13 +313,51 @@ if 'data' in st.session_state and not st.session_state.data.empty:
         with col2:
             df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
             df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
-            # Assuming 'Comercio' and 'Monto' columns exist
-            st.bar_chart(df_sorted, x = "Comercio", y = "Monto", use_container_width=True)
-        # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
+
+            chart_code = """
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <title>Line Chart with Interpolation</title>
+            </head>
+            <body>
+                <div style="width:100%;">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'Demo Line Interpolation',
+                                data: [65, 59, 80, 81, 56, 55, 40],
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.4,  // Adjust this value for different interpolation (0 for no interpolation and 1 for maximum smoothing)
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </body>
+            </html>
+            """
+            
+            # Render the chart in Streamlit using the HTML component
+            html(chart_code, height=400)
 
         with col3:
-            st.line_chart(edited_data[['Fecha', 'Monto Acumulado']], x = "Fecha", y = "Monto Acumulado", use_container_width=True)
-
             chart_code = """
             <!DOCTYPE html>
             <html lang="en">
