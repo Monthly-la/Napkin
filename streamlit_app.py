@@ -307,7 +307,7 @@ with tab1:
     if 'data' in st.session_state and not st.session_state.data.empty:
         edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
         
- with tab2:
+with tab2:
     if st.button('Generate Graphs'):
         st.markdown("")
         with col2:
@@ -356,7 +356,7 @@ with tab1:
                     </html>
                     """
                 html(chart_code, height=500)
-
+    
         with col3:
             if 'data' in st.session_state and not st.session_state.data.empty:
                 df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
@@ -415,5 +415,5 @@ with tab1:
                 html(chart_code, height=500)
             else:
                 st.error('No data to display or process.')
-else:
-    st.error('No data to display or process.')
+    else:
+        st.error('No data to display or process.')
