@@ -319,7 +319,7 @@ with tab1:
 with tab2:
     st.markdown("")
     if graphs:
-        col2, colB, col3 = st.columns([11,1,11])
+        col2, colB, col3 = st.columns([10,1,10])
         st.markdown("")
         with col2:
             st.markdown("<p style='text-align: center; color: black;'>MOVIMIENTOS DE SALDO (MXN)</p>", unsafe_allow_html=True)
