@@ -290,8 +290,6 @@ load_navbar("Sergio Sepúlveda", "https://media.licdn.com/dms/image/v2/D5603AQHu
 
 st.markdown("")
 st.markdown("")
-st.header("Dashboard")
-st.markdown("")
 st.markdown("")
 
 # Streamlit app
