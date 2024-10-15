@@ -329,7 +329,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <title>Responsive Area Chart</title>
+                    <title>Simple Area Chart</title>
                     <style>
                         canvas {{
                             width: 100% !important;
@@ -346,10 +346,10 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                         var myChart = new Chart(ctx, {{
                             type: 'line',
                             data: {{
-                                labels: {dates_js},
+                                labels: ['January', 'February', 'March', 'April', 'May'],
                                 datasets: [{{
-                                    label: 'Monto Acumulado',
-                                    data: {values_js},
+                                    label: 'Sample Data',
+                                    data: [10, 20, 30, 40, 50],
                                     fill: true,
                                     backgroundColor: 'rgba(78, 115, 223, 0.1)',
                                     borderColor: 'rgb(78, 115, 223)',
@@ -358,26 +358,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             }},
                             options: {{
                                 responsive: true,
-                                maintainAspectRatio: false,
-                                scales: {{
-                                    x: {{
-                                        type: 'time',
-                                        time: {{
-                                            unit: 'day'
-                                        }},
-                                        title: {{
-                                            display: true,
-                                            text: 'Fecha'
-                                        }}
-                                    }},
-                                    y: {{
-                                        beginAtZero: true,
-                                        title: {{
-                                            display: true,
-                                            text: 'Monto Acumulado'
-                                        }}
-                                    }}
-                                }}
+                                maintainAspectRatio: false
                             }}
                         }});
                     </script>
@@ -385,8 +366,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 </html>
                 """
                 html(chart_code, height=500)
-            else:
-                st.error('No data to display or process.')
 
         with col3:
             df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
