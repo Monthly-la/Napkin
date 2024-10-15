@@ -297,18 +297,21 @@ tab1, tab2 = st.tabs(["UPLOAD INFO 📤", "DASHBOARD 📊"])
 graphs = False
 
 with tab1: 
-    uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
+col1, col2 = st.columns(2)
+    with col1:
+        uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
+        
+        if uploaded_files:
+            if 'data' not in st.session_state or st.button('Process Statements'):
+                st.session_state.data = process_files(uploaded_files)
     
-    if uploaded_files:
-        if 'data' not in st.session_state or st.button('Process Statements'):
-            st.session_state.data = process_files(uploaded_files)
-    
-    # Display and edit data using session state
-    if 'data' in st.session_state and not st.session_state.data.empty:
-        edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
-    
-    if st.button('Generate Graphs'):
-        graphs = True
+    with col2:
+        # Display and edit data using session state
+        if 'data' in st.session_state and not st.session_state.data.empty:
+            edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
+        
+        if st.button('Generate Graphs'):
+            graphs = True
 
         
 with tab2:
