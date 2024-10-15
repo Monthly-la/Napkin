@@ -149,7 +149,7 @@ if uploaded_files:
     processed_data = process_files(uploaded_files)
     if st.button('Process Statements'):
         if not processed_data.empty:
-            st.dataframe(processed_data)
+            st.data_editor(processed_data)
             if st.button('Generate Graphs'):
                 st.markdown("")
                 st.bar_chart(processed_data[["Comercio", "Monto"]].groupby(by = "Comercio").sum().reset_index(), x='Comercio', y="Monto", x_label='Comercio', y_label="Monto")
