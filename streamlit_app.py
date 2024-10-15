@@ -25,12 +25,12 @@ def load_css():
             border: 2px solid green;  /* Adds a green border for high visibility */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            padding: 20px;
-            margin-top: 10px;
+            padding: 10px;
+            margin-top: 5px;
         }
         canvas {
             width: 100% !important;
-            height: 500px;
+            height: 500px !important;
         }
     </style>
     """
@@ -365,7 +365,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                         </body>
                     </html>
                     """
-                html(chart_code, height=1000)
+                html(chart_code, height=500)
 
         with col3:
             if 'data' in st.session_state and not st.session_state.data.empty:
@@ -416,7 +416,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 </body>
                 </html>
                 """
-                html(chart_code, height=1000)
+                html(chart_code, height=500)
             else:
                 st.error('No data to display or process.')
 else:
