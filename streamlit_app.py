@@ -321,10 +321,17 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <title>Line Chart with Interpolation</title>
+                <style>
+                    /* Ensure the canvas size fills the container while maintaining aspect ratio */
+                    canvas {
+                        width: 100% !important;
+                        height: auto !important;
+                    }
+                </style>
+                <title>Responsive Area Chart</title>
             </head>
             <body>
-                <div style="width:100%;">
+                <div style="width: 100%;">
                     <canvas id="myChart"></canvas>
                 </div>
                 <script>
@@ -332,16 +339,19 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     var myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
                             datasets: [{
-                                label: 'Demo Line Interpolation',
-                                data: [65, 59, 80, 81, 56, 55, 40],
-                                fill: false,
-                                borderColor: 'rgb(75, 192, 192)',
-                                tension: 0.4,  // Adjust this value for different interpolation (0 for no interpolation and 1 for maximum smoothing)
+                                label: 'Number of Items Sold',
+                                data: [65, 59, 80, 81, 56, 55],
+                                fill: true,
+                                backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                                borderColor: 'rgb(78, 115, 223)',
+                                tension: 0.3
                             }]
                         },
                         options: {
+                            responsive: true,
+                            maintainAspectRatio: false,  // Important for full width and variable height
                             scales: {
                                 y: {
                                     beginAtZero: true
@@ -356,7 +366,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
             
             # Render the chart in Streamlit using the HTML component
             html(chart_code, height=400)
-
         with col3:
             chart_code = """
             <!DOCTYPE html>
