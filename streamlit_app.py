@@ -7,6 +7,20 @@ from datetime import datetime
 import io
 import openai
 
+# Function to load custom CSS
+def load_css():
+    css = """
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        html, body, [class*="css"] {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    """
+    st.markdown(css, unsafe_allow_html=True)
+
+# Load the custom CSS
+load_css()
 
 def extract_data_from_pdf(byte_data, bank_name):
     """
