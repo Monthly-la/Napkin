@@ -325,7 +325,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <title>Area Chart with Actual Data</title>
+                    <title>Area Chart with Time Scale</title>
                     <style>
                         canvas {{
                             width: 100% !important;
@@ -354,7 +354,26 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             }},
                             options: {{
                                 responsive: true,
-                                maintainAspectRatio: false
+                                maintainAspectRatio: false,
+                                scales: {{
+                                    x: {{
+                                        type: 'time',
+                                        time: {{
+                                            unit: 'day'
+                                        }},
+                                        title: {{
+                                            display: true,
+                                            text: 'Fecha'
+                                        }}
+                                    }},
+                                    y: {{
+                                        beginAtZero: true,
+                                        title: {{
+                                            display: true,
+                                            text: 'Monto Acumulado'
+                                        }}
+                                    }}
+                                }}
                             }}
                         }});
                     </script>
