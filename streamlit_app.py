@@ -173,7 +173,9 @@ def load_navbar(user_name):
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Added shadow */
+            border-radius: 15px; /* Rounded corners for the navbar */
+            margin-bottom: 20px; /* Space below navbar to emphasize shadow */
         }}
         .navbar a, .dropdown-content a {{
             padding: 12px;
@@ -181,6 +183,7 @@ def load_navbar(user_name):
             text-decoration: none;
             font-size: 16px;
             text-align: center;
+            border-radius: 10px; /* Rounded corners for links */
         }}
         .navbar a:hover, .dropdown-content a:hover {{
             background-color: #2e59d9; /* Slightly darker blue on hover */
@@ -193,6 +196,7 @@ def load_navbar(user_name):
             font-size: 16px;
             border: none;
             width: 300px;
+            border-radius: 10px; /* Rounded corners for the input field */
         }}
         .search-container button {{
             padding: 7px 10px;
@@ -201,6 +205,7 @@ def load_navbar(user_name):
             font-size: 16px;
             border: none;
             cursor: pointer;
+            border-radius: 10px; /* Rounded corners for the button */
         }}
         .search-container button:hover {{
             background: #224abe;
@@ -216,6 +221,7 @@ def load_navbar(user_name):
             font-size: 16px;
             border: none;
             cursor: pointer;
+            border-radius: 10px; /* Rounded corners for the dropdown button */
         }}
         .dropdown-content {{
             display: none;
@@ -224,6 +230,7 @@ def load_navbar(user_name):
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
+            border-radius: 10px; /* Rounded corners for the dropdown content */
         }}
         .dropdown-content a {{
             color: black;
@@ -257,7 +264,7 @@ def load_navbar(user_name):
     """
     st.markdown(navbar_html, unsafe_allow_html=True)
 
-# Include Google Fonts
+# Include Google Fonts for Roboto
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
