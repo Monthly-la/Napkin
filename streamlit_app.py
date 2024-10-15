@@ -350,6 +350,23 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                 }}]
                             }},
                             options: {{
+                                tooltips: {
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            let value = tooltipItem.yLabel;
+                                            return value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            callback: function(value, index, values) {
+                                                return value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                            }
+                                        }
+                                    }]
+                                },
                                 responsive: true,
                                 maintainAspectRatio: false
                             }}
