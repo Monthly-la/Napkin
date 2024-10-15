@@ -349,7 +349,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                     tension: 0.3
                                 }}]
                             }},
-                            options: {{
+                            options: {
                                 tooltips: {
                                     callbacks: {
                                         label: function(tooltipItem, data) {
@@ -369,7 +369,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                 },
                                 responsive: true,
                                 maintainAspectRatio: false
-                            }}
+                            }
                         }});
                     </script>
                 </body>
