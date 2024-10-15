@@ -314,7 +314,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
             df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
             df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
 
-            chart_code = """
+            chart_code = f"""
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -322,11 +322,10 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <style>
-                    /* Ensure the canvas size fills the container while maintaining aspect ratio */
-                    canvas {
+                    canvas {{
                         width: 100% !important;
                         height: auto !important;
-                    }
+                    }}
                 </style>
                 <title>Responsive Area Chart</title>
             </head>
@@ -336,36 +335,50 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 </div>
                 <script>
                     var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {
+                    var myChart = new Chart(ctx, {{
                         type: 'line',
-                        data: {
-                            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                            datasets: [{
-                                label: 'Number of Items Sold',
-                                data: [65, 59, 80, 81, 56, 55],
+                        data: {{
+                            labels: {list(edited_data["Fecha"])},
+                            datasets: [{{
+                                label: 'Monto Acumulado',
+                                data: {list(edited_data["Monto Acumulado])},
                                 fill: true,
                                 backgroundColor: 'rgba(78, 115, 223, 0.1)',
                                 borderColor: 'rgb(78, 115, 223)',
                                 tension: 0.3
-                            }]
-                        },
-                        options: {
+                            }}]
+                        }},
+                        options: {{
                             responsive: true,
-                            maintainAspectRatio: false,  // Important for full width and variable height
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
+                            maintainAspectRatio: false,
+                            scales: {{
+                                x: {{
+                                    type: 'time',
+                                    time: {{
+                                        unit: 'day'
+                                    }},
+                                    title: {{
+                                        display: true,
+                                        text: 'Fecha'
+                                    }}
+                                }},
+                                y: {{
+                                    beginAtZero: true,
+                                    title: {{
+                                        display: true,
+                                        text: 'Monto Acumulado'
+                                    }}
+                                }}
+                            }}
+                        }}
+                    }});
                 </script>
             </body>
             </html>
             """
             
-            # Render the chart in Streamlit using the HTML component
-            html(chart_code, height=400)
+            html(chart_code, height=500)
+
         with col3:
             chart_code = """
             <!DOCTYPE html>
