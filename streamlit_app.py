@@ -364,7 +364,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
         with col3:
             if 'data' in st.session_state and not st.session_state.data.empty:
                 df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
-                df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
+                df_sorted = df_summary.sort_values('Monto', ascending=True).reset_index()
                 class_js = json.dumps(df_sorted["Comercio"].tolist())  # Convert Python list to JSON for JavaScript
                 values_js = json.dumps(df_sorted["Monto"].tolist())  # Convert Python list to JSON for JavaScript
             
