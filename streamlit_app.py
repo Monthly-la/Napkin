@@ -304,7 +304,7 @@ if uploaded_files:
 if 'data' in st.session_state and not st.session_state.data.empty:
     edited_data = st.sidebar.data_editor(st.session_state.data, num_rows="dynamic")
 
-    if st.button('Generate Graphs'):
+    if st.sidebar..button('Generate Graphs'):
         st.markdown("")
         with col2:
             df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
