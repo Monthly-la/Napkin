@@ -316,81 +316,81 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 
                 # Chart with actual data
                 chart_code = f"""
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <title>Area Chart with Actual Data</title>
-                    <style>
-                        canvas {{
-                            width: 100% !important;
-                            height: auto !important;
-                        }}
-                    </style>
-                </head>
-                <body>
-                    <div style="width: 100%;">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    <script>
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        var myChart = new Chart(ctx, {{
-                            type: 'line',
-                            data: {{
-                                labels: {dates_js},
-                                datasets: [{{
-                                    label: 'Monto Acumulado',
-                                    data: {values_js},
-                                    fill: true,
-                                    backgroundColor: 'rgba(78, 115, 223, 0.1)',
-                                    borderColor: 'rgb(78, 115, 223)',
-                                    tension: 0.3
-                                }}]
-                            }},
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                tooltips: {
-                                    enabled: true,
-                                    mode: 'index',
-                                    intersect: false, // This ensures tooltips are shown not just when hovering directly over the element
-                                    position: 'nearest', // This can make tooltips appear when the hover is close to the element
-                                    backgroundColor: 'rgba(255,255,255,0.8)', // Light background for tooltip
-                                    titleFontColor: '#6e707e', // Gray color for title
-                                    bodyFontColor: '#858796', // Slightly darker gray for body
-                                    borderColor: '#dddfeb', // Light gray border
-                                    borderWidth: 1,
-                                    xPadding: 15,
-                                    yPadding: 15,
-                                    displayColors: false, // Set to false if you do not want to display color boxes
-                                    caretPadding: 10,
-                                    cornerRadius: 6, // Rounded corners for the tooltip
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            let label = data.datasets[tooltipItem.datasetIndex].label || '';
-                                            let value = tooltipItem.yLabel.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                                            return `${label}: ${value}`; // Custom label formatting
+                    <!DOCTYPE html>
+                    <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <title>Area Chart with Actual Data</title>
+                            <style>
+                                canvas {{
+                                    width: 100% !important;
+                                    height: auto !important;
+                                }}
+                            </style>
+                        </head>
+                        <body>
+                            <div style="width: 100%;">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <script>
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var myChart = new Chart(ctx, {{
+                                    type: 'line',
+                                    data: {{
+                                        labels: {dates_js},
+                                        datasets: [{{
+                                            label: 'Monto Acumulado',
+                                            data: {values_js},
+                                            fill: true,
+                                            backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                                            borderColor: 'rgb(78, 115, 223)',
+                                            tension: 0.3
+                                        }}]
+                                    }},
+                                    options: {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        tooltips: {
+                                            enabled: true,
+                                            mode: 'index',
+                                            intersect: false, // This ensures tooltips are shown not just when hovering directly over the element
+                                            position: 'nearest', // This can make tooltips appear when the hover is close to the element
+                                            backgroundColor: 'rgba(255,255,255,0.8)', // Light background for tooltip
+                                            titleFontColor: '#6e707e', // Gray color for title
+                                            bodyFontColor: '#858796', // Slightly darker gray for body
+                                            borderColor: '#dddfeb', // Light gray border
+                                            borderWidth: 1,
+                                            xPadding: 15,
+                                            yPadding: 15,
+                                            displayColors: false, // Set to false if you do not want to display color boxes
+                                            caretPadding: 10,
+                                            cornerRadius: 6, // Rounded corners for the tooltip
+                                            callbacks: {
+                                                label: function(tooltipItem, data) {
+                                                    let label = data.datasets[tooltipItem.datasetIndex].label || '';
+                                                    let value = tooltipItem.yLabel.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                                    return `${label}: ${value}`; // Custom label formatting
+                                                }
+                                            }
+                                        },
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true,
+                                                    callback: function(value) {
+                                                        return Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                                    }
+                                                }
+                                            }]
                                         }
                                     }
-                                },
-                                scales: {
-                                    yAxes: [{
-                                        ticks: {
-                                            beginAtZero: true,
-                                            callback: function(value) {
-                                                return Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                                            }
-                                        }
-                                    }]
-                                }
-                            }
-                        }});
-                    </script>
-                </body>
-                </html>
-                """
+                                }});
+                            </script>
+                        </body>
+                    </html>
+                    """
                 html(chart_code, height=500)
 
         with col3:
