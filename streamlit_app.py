@@ -171,7 +171,7 @@ def load_navbar(user_name):
             padding: 10px 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }}
-        .navbar a {{
+        .navbar a, .dropdown-content a {{
             float: left;
             padding: 12px;
             color: black;
@@ -180,7 +180,7 @@ def load_navbar(user_name):
             width: 150px; /* Define width here */
             text-align: center;
         }}
-        .navbar a:hover {{
+        .navbar a:hover, .dropdown-content a:hover {{
             background-color: #ddd;
         }}
         .search-container {{
@@ -206,6 +206,39 @@ def load_navbar(user_name):
         .search-container button:hover {{
             background: #ccc;
         }}
+        .dropdown {{
+            float: left;
+            overflow: hidden;
+        }}
+        .dropdown .dropbtn {{
+            font-size: 17px;    
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit; /* Necessary for vertical align on mobile phones */
+            margin: 0; /* Important for vertical align on mobile phones */
+        }}
+        .dropdown-content {{
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }}
+        .dropdown-content a {{
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }}
+        .dropdown:hover .dropdown-content {{
+            display: block;
+        }}
     </style>
 
     <div class="navbar">
@@ -214,9 +247,13 @@ def load_navbar(user_name):
             <input type="text" placeholder="Search..">
         </div>
         <a href="#notification">Notifications</a>
-        <div>
-            <a href="#config">Configuration</a>
-            <a href="#">{user_name}</a>
+        <div class="dropdown">
+            <button class="dropbtn">{user_name} &#9662;</button>
+            <div class="dropdown-content">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
         </div>
     </div>
     """
