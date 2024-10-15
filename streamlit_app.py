@@ -7,6 +7,7 @@ from datetime import datetime
 import io
 import openai
 from streamlit.components.v1 import html
+import json
 
 
 pd.options.display.float_format = "{:,.2f}".format
