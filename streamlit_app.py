@@ -20,18 +20,18 @@ def load_css():
             font-family: 'Roboto', sans-serif;
         }
         .badge {
-          background-color: #EEF2F8;
-          color: black;
-          padding: 8px;
-          border-radius: 5px;
-          font-family: Roboto;
-          font-weight: 100;
-          font-size: x-small;
-          color: gray;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-          text-align: center;
-          display: table-cell;    
-          vertical-align: middle; 
+            background-color: #EEF2F8;
+            color: gray;
+            padding: 8px;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            font-size: x-small;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;         /* Using flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+            text-align: center;
         }
     </style>
     """
