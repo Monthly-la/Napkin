@@ -30,6 +30,7 @@ def load_css():
           font-weight: 100;
           font-size: x-small;
           color: gray;
+          flex: 0 0 auto;
         }
     </style>
     """
