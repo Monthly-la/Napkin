@@ -396,7 +396,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             labels: {class_js},
                             datasets: [{
                                 label: '# of Votes',
-                                data: {dates_js},
+                                data: {values_js},
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)'
                                     ],
