@@ -10,7 +10,6 @@ from streamlit.components.v1 import html
 import json
 
 st.set_page_config(layout="wide")
-st.legacy_caching.clear_cache()
 
 # Function to load custom CSS
 
