@@ -162,7 +162,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
         df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
         df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
         # Assuming 'Comercio' and 'Monto' columns exist
-        st.bar_chart(df_sorted, use_container_width=True)
+        st.bar_chart(df_sorted, x = "Comercio", y = "Monto", use_container_width=True)
         # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
         st.line_chart(edited_data[['Fecha', 'Monto Acumulado']], x = "Fecha", y = "Monto Acumulado", use_container_width=True)
 else:
