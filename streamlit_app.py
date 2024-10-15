@@ -225,6 +225,14 @@ def load_navbar(user_name):
             cursor: pointer;
             border-radius: 10px; /* Rounded corners for the dropdown button */
         }}
+
+        .profile-img {{
+            width: 32px; /* Set the image size */
+            height: 32px;
+            border-radius: 50%; /* Circular image */
+            margin-right: 8px; /* Space between image and text */
+        }}
+        
         .dropdown-content {{
             display: none;
             position: absolute;
@@ -254,7 +262,10 @@ def load_navbar(user_name):
             <button type="submit">🔎︎</button>
         </div>
         <div class="dropdown">
-            <button class="dropbtn">{user_name} &#9662;</button>
+            <button class="dropbtn">
+                <img src="{image_url}" alt="Profile Image" class="profile-img">
+                {user_name} &#9662;
+            </button>
             <div class="dropdown-content">
                 <a href="#">Profile</a>
                 <a href="#">Settings</a>
