@@ -158,8 +158,9 @@ if 'data' in st.session_state and not st.session_state.data.empty:
     edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
 
     if st.button('Generate Graphs'):
+        st.markdown("")
         # Assuming 'Comercio' and 'Monto' columns exist
-        st.bar_chart(edited_data[['Comercio', 'Monto']].groupby('Comercio').sum().sort_values(by = "Monto"))
+        st.bar_chart(edited_data[['Comercio', 'Monto']].groupby('Comercio').sum().sort_values(by = "Monto", ascending = False))
         # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
         st.line_chart(edited_data[['Fecha', 'Monto Acumulado']], x = "Fecha", y = "Monto Acumulado")
 else:
