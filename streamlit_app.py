@@ -169,7 +169,7 @@ def load_navbar(user_name):
             width: 100%;
             background-color: #4e73df; /* Deep blue background */
             color: white;
-            overflow: auto;
+            overflow: hidden; /* Adjusted to hide overflow */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -235,6 +235,7 @@ def load_navbar(user_name):
         }}
         .dropdown:hover .dropdown-content {{
             display: block;
+            top: 100%; /* Start right below the dropdown button */
         }}
     </style>
 
