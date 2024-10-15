@@ -335,12 +335,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                             <title>Area Chart with Actual Data</title>
-                            <style>
-                                canvas {{
-                                    width: 100% !important;
-                                    height: auto !important;
-                                }}
-                            </style>
                         </head>
                         <body>
                             <div class="card">
@@ -360,6 +354,10 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                             borderColor: 'rgb(78, 115, 223)',
                                             tension: 0.3
                                         }}]
+                                    }},
+                                    options: {{
+                                        responsive: true,
+                                        maintainAspectRatio: false
                                     }}
                                 }});
                             </script>
@@ -384,12 +382,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     <title>Responsive Bar Chart</title>
-                    <style>
-                        canvas {{
-                            width: 100% !important;
-                            height: auto !important;
-                        }}
-                    </style>
                 </head>
                 <body>
                     <div class="card">
