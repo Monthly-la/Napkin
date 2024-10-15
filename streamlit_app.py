@@ -232,6 +232,13 @@ def load_navbar(user_name):
             border-radius: 50%; /* Circular image */
             margin-right: 8px; /* Space between image and text */
         }}
+
+        .profile-img {{
+            width: 32px; /* Set the image size */
+            height: 32px;
+            border-radius: 50%; /* Circular image */
+            margin-right: 8px; /* Space between image and text */
+        }}
         
         .dropdown-content {{
             display: none;
@@ -257,9 +264,10 @@ def load_navbar(user_name):
     </style>
 
     <div class="navbar">
+        <a href="#home">Home</a>
         <div class="search-container">
-            <input type="text" placeholder="Search">
-            <button type="submit">🔎︎</button>
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
         </div>
         <div class="dropdown">
             <button class="dropbtn">
@@ -284,7 +292,8 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Replace 'User Name' with a dynamic user name if you have that functionality
-load_navbar("User Name")
+# Replace 'https://via.placeholder.com/150' with the actual URL of the user's profile image
+load_navbar("User Name", "https://via.placeholder.com/150")
 
 st.markdown("")
 st.markdown("")
