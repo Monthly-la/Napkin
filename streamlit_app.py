@@ -25,12 +25,11 @@ def load_css():
           padding: 4px 8px;
           text-align: center;
           border-radius: 5px;
-          text-align: center;
           font-family: Roboto;
           font-weight: 100;
-          font-size: x-small;
+          font-size: small;
           color: gray;
-          flex: 0 0 auto;
+          flex: auto;
         }
     </style>
     """
