@@ -7,6 +7,8 @@ from datetime import datetime
 import io
 import openai
 
+st.set_page_config(layout="wide")
+
 # Function to load custom CSS
 def load_css():
     css = """
