@@ -168,7 +168,7 @@ def load_navbar(user_name):
         .navbar {{
             width: 100%;
             background-color: #EEF2F8; /* Deep blue background */
-            color: white;
+            color: 66707E;
             display: flex;
             justify-content: space-between;
             align-items: center;
