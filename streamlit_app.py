@@ -350,26 +350,31 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                 }}]
                             }},
                             options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
                                 tooltips: {
                                     callbacks: {
                                         label: function(tooltipItem, data) {
-                                            let value = tooltipItem.yLabel;
-                                            return value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                            return tooltipItem.yLabel.toLocaleString(undefined, {
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2
+                                            });
                                         }
                                     }
                                 },
                                 scales: {
-                                    yAxes: [{
+                                    y: {
                                         ticks: {
-                                            callback: function(value, index, values) {
-                                                return value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                            callback: function(value) {
+                                                return Number(value).toLocaleString(undefined, {
+                                                    minimumFractionDigits: 2,
+                                                    maximumFractionDigits: 2
+                                                });
                                             }
                                         }
-                                    }]
-                                },
-                                responsive: true,
-                                maintainAspectRatio: false
-                            }
+                                    }
+                                }
+                            },
                         }});
                     </script>
                 </body>
