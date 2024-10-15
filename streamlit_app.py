@@ -21,8 +21,9 @@ def load_css():
             font-family: 'Roboto', sans-serif;
         }
         .card {
-            background-color: #F6F8FB;
-            border-radius: 2px;
+            background-color: red;  /* Change this to a bright color temporarily */
+            border: 2px solid green;  /* Adds a green border for high visibility */
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
             padding: 20px;
             margin-top: 10px;
