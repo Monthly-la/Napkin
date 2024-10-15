@@ -146,13 +146,19 @@ st.title('Credit Card Statement Processor')
 
 
 uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
+
 if uploaded_files:
-    if 'data' in st.session_state and not st.session_state.data.empty:
-        edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
-        if st.button('Generate Graphs'):
-            # Assuming 'Comercio' and 'Monto' columns exist
-            st.bar_chart(edited_data[['Comercio', 'Monto']].groupby('Comercio').sum())
-            # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
-            st.line_chart(edited_data[['Fecha', 'Monto Acumulado']])
-        else:
-            st.error('No data to display.')
+    if 'data' not in st.session_state or st.button('Process Statements'):
+        st.session_state.data = process_files(uploaded_files)
+
+# Display and edit data using session state
+if 'data' in st.session_state and not st.session_state.data.empty:
+    edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
+
+    if st.button('Generate Graphs'):
+        # Assuming 'Comercio' and 'Monto' columns exist
+        st.bar_chart(edited_data[['Comercio', 'Monto']].groupby('Comercio').sum())
+        # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
+        st.line_chart(edited_data[['Fecha', 'Monto Acumulado']])
+else:
+    st.error('No data to display or process.')
