@@ -293,36 +293,87 @@ st.markdown("")
 st.markdown("")
 
 # Streamlit app
+tab1, tab2 = st.tabs(["UPLOAD INFO", "DASHBOARD"])
+
 col2, colB, col3 = st.columns([9,1,9])
- 
+with tab1: 
+    uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
     
-uploaded_files = st.sidebar.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
-
-if uploaded_files:
-    if 'data' not in st.session_state or st.sidebar.button('Process Statements'):
-        st.session_state.data = process_files(uploaded_files)
-
-# Display and edit data using session state
-if 'data' in st.session_state and not st.session_state.data.empty:
-    edited_data = st.sidebar.data_editor(st.session_state.data, num_rows="dynamic")
+    if uploaded_files:
+        if 'data' not in st.session_state or st.button('Process Statements'):
+            st.session_state.data = process_files(uploaded_files)
     
-
-    if st.sidebar.button('Generate Graphs'):
-        st.markdown("")
-        with col2:
-            if 'data' in st.session_state and not st.session_state.data.empty:
-                dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
-                values_js = edited_data['Monto Acumulado'].tolist()
-                
-                # Chart with actual data
-                chart_code = f"""
-                    <!DOCTYPE html>
-                    <html lang="en">
+    # Display and edit data using session state
+    if 'data' in st.session_state and not st.session_state.data.empty:
+        edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
+        
+    
+        if st.button('Generate Graphs'):
+            with tab2:
+                st.markdown("")
+                with col2:
+                    if 'data' in st.session_state and not st.session_state.data.empty:
+                        dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
+                        values_js = edited_data['Monto Acumulado'].tolist()
+                        
+                        # Chart with actual data
+                        chart_code = f"""
+                            <!DOCTYPE html>
+                            <html lang="en">
+                                <head>
+                                    <meta charset="UTF-8">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                    <title>Area Chart with Actual Data</title>
+                                    <style>
+                                        canvas {{
+                                            width: 100% !important;
+                                            height: auto !important;
+                                        }}
+                                    </style>
+                                </head>
+                                <body>
+                                    <div style="width: 100%;">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                    <script>
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var myChart = new Chart(ctx, {{
+                                            type: 'line',
+                                            data: {{
+                                                labels: {dates_js},
+                                                datasets: [{{
+                                                    label: 'Monto Acumulado',
+                                                    data: {values_js},
+                                                    fill: true,
+                                                    backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                                                    borderColor: 'rgb(78, 115, 223)',
+                                                    tension: 0.3
+                                                }}]
+                                            }}
+                                        }});
+                                    </script>
+                                </body>
+                            </html>
+                            """
+                        html(chart_code, height=500)
+        
+                with col3:
+                    if 'data' in st.session_state and not st.session_state.data.empty:
+                        df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
+                        df_sorted = df_summary.sort_values('Monto', ascending=True).reset_index()
+                        class_js = json.dumps(df_sorted["Comercio"].tolist())  # Convert Python list to JSON for JavaScript
+                        values_js = json.dumps(df_sorted["Monto"].tolist())  # Convert Python list to JSON for JavaScript
+                    
+                        # Correctly formatted JavaScript and HTML for bar chart
+                        chart_code = f"""
+                        <!DOCTYPE html>
+                        <html lang="en">
                         <head>
                             <meta charset="UTF-8">
                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                            <title>Area Chart with Actual Data</title>
+                            <title>Responsive Bar Chart</title>
                             <style>
                                 canvas {{
                                     width: 100% !important;
@@ -337,82 +388,33 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             <script>
                                 var ctx = document.getElementById('myChart').getContext('2d');
                                 var myChart = new Chart(ctx, {{
-                                    type: 'line',
+                                    type: 'bar',
                                     data: {{
-                                        labels: {dates_js},
+                                        labels: {class_js},
                                         datasets: [{{
-                                            label: 'Monto Acumulado',
+                                            label: 'Monto Total (MXN)',
                                             data: {values_js},
-                                            fill: true,
-                                            backgroundColor: 'rgba(78, 115, 223, 0.1)',
-                                            borderColor: 'rgb(78, 115, 223)',
-                                            tension: 0.3
+                                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                            borderColor: 'rgba(255, 99, 132, 1)',
+                                            borderWidth: 1
                                         }}]
+                                    }},
+                                    options: {{
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        scales: {{
+                                            y: {{
+                                                beginAtZero: true
+                                            }}
+                                        }}
                                     }}
                                 }});
                             </script>
                         </body>
-                    </html>
-                    """
-                html(chart_code, height=500)
-
-        with col3:
-            if 'data' in st.session_state and not st.session_state.data.empty:
-                df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
-                df_sorted = df_summary.sort_values('Monto', ascending=True).reset_index()
-                class_js = json.dumps(df_sorted["Comercio"].tolist())  # Convert Python list to JSON for JavaScript
-                values_js = json.dumps(df_sorted["Monto"].tolist())  # Convert Python list to JSON for JavaScript
-            
-                # Correctly formatted JavaScript and HTML for bar chart
-                chart_code = f"""
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <title>Responsive Bar Chart</title>
-                    <style>
-                        canvas {{
-                            width: 100% !important;
-                            height: auto !important;
-                        }}
-                    </style>
-                </head>
-                <body>
-                    <div style="width: 100%;">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    <script>
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        var myChart = new Chart(ctx, {{
-                            type: 'bar',
-                            data: {{
-                                labels: {class_js},
-                                datasets: [{{
-                                    label: 'Monto Total (MXN)',
-                                    data: {values_js},
-                                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                    borderColor: 'rgba(255, 99, 132, 1)',
-                                    borderWidth: 1
-                                }}]
-                            }},
-                            options: {{
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                scales: {{
-                                    y: {{
-                                        beginAtZero: true
-                                    }}
-                                }}
-                            }}
-                        }});
-                    </script>
-                </body>
-                </html>
-                """
-                html(chart_code, height=500)
-            else:
-                st.error('No data to display or process.')
-else:
-    st.error('No data to display or process.')
+                        </html>
+                        """
+                        html(chart_code, height=500)
+                    else:
+                        st.error('No data to display or process.')
+        else:
+            st.error('No data to display or process.')
