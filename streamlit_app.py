@@ -160,7 +160,7 @@ def process_files(uploaded_files):
 
 
 # Streamlit app
-col1, col2, col3 = st.columns([2,3,3])
+col1, col2, col3 = st.columns([4,3,3])
 with col1:
     st.title('Credit Card Statement Processor')
     
