@@ -28,7 +28,7 @@ def load_css():
           text-align: center;
           font-family: Roboto;
           font-weight: 100;
-          color: gray;'
+          color: gray;
         }
     </style>
     """
