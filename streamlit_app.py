@@ -29,7 +29,6 @@ def load_css():
           font-weight: 100;
           font-size: small;
           color: gray;
-          display: flex;
           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
     </style>
