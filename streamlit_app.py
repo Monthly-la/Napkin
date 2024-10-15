@@ -320,7 +320,7 @@ with tab2:
         col2, colB, col3 = st.columns([11,1,11])
         st.markdown("")
         with col2:
-            st.markdown("Movimientos de Saldo (MXN)")
+            st.markdown("<h1 style='text-align: center; color: grey;'>Movimientos de Saldo (MXN)</h1>", unsafe_allow_html=True)
             if 'data' in st.session_state and not st.session_state.data.empty:
                 dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
                 values_js = edited_data['Monto Acumulado'].tolist()
@@ -368,7 +368,7 @@ with tab2:
                 html(chart_code, height=500)
     
         with col3:
-            st.markdown("Egreso Total por Comercio (MXN)")
+            st.markdown("<h1 style='text-align: center; color: grey;'>Egreso Total por Comercio (MXN)</h1>", unsafe_allow_html=True)
             if 'data' in st.session_state and not st.session_state.data.empty:
                 df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
                 df_sorted = df_summary.sort_values('Monto', ascending=True).reset_index()
