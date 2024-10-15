@@ -25,6 +25,10 @@ def load_css():
           padding: 4px 8px;
           text-align: center;
           border-radius: 5px;
+          text-align: center;
+          font-family: Roboto;
+          font-weight: 100;
+          color: gray;'
         }
     </style>
     """
@@ -329,7 +333,7 @@ with tab2:
         col2, colB, col3 = st.columns([10,1,10])
         st.markdown("")
         with col2:
-            st.markdown("<span class = 'badge' style='text-align: center; color: black;'>MOVIMIENTOS DE SALDO (MXN)</span>", unsafe_allow_html=True)
+            st.markdown("<span class = 'badge'>MOVIMIENTOS DE SALDO (MXN)</span>", unsafe_allow_html=True)
             if 'data' in st.session_state and not st.session_state.data.empty:
                 dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
                 values_js = edited_data['Monto Acumulado'].tolist()
@@ -377,7 +381,7 @@ with tab2:
                 html(chart_code, height=500)
     
         with col3:
-            st.markdown("<span class = 'badge' style='text-align: center; color: black;'>EGRESO TOTAL POR COMERCIO (MXN)</span>", unsafe_allow_html=True)
+            st.markdown("<span class = 'badge'>EGRESO TOTAL POR COMERCIO (MXN)</span>", unsafe_allow_html=True)
             if 'data' in st.session_state and not st.session_state.data.empty:
                 df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
                 df_sorted = df_summary.sort_values('Monto', ascending=True).reset_index()
