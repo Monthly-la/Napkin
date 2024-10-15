@@ -149,9 +149,6 @@ uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files
 if uploaded_files:
     if 'data' in st.session_state and not st.session_state.data.empty:
         edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
-        
-    if st.button('Process Statements'):
-        edited_data = st.data_editor(processed_data, num_rows="dynamic")
         if st.button('Generate Graphs'):
             # Assuming 'Comercio' and 'Monto' columns exist
             st.bar_chart(edited_data[['Comercio', 'Monto']].groupby('Comercio').sum())
