@@ -233,7 +233,7 @@ def load_navbar(user_name):
             border-radius: 10px; /* Rounded corners for the dropdown content */
         }}
         .dropdown-content a {{
-            color: black;
+            color: #8E9CB0;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
