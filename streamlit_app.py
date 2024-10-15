@@ -327,10 +327,20 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <title>Chart.js in Streamlit</title>
+                <style>
+                    /* Ensure the canvas size fills the container but maintains aspect ratio */
+                    canvas {
+                        width: 100% !important;
+                        height: auto !important;
+                    }
+                </style>
+                <title>Responsive Chart.js in Streamlit</title>
             </head>
             <body>
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <!-- Adjust the canvas to be more responsive -->
+                <div style="width: 100%;">
+                    <canvas id="myChart"></canvas>
+                </div>
                 <script>
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var myChart = new Chart(ctx, {
@@ -360,6 +370,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             }]
                         },
                         options: {
+                            maintainAspectRatio: false, // This will allow the height to adjust based on width
                             scales: {
                                 y: {
                                     beginAtZero: true
