@@ -365,10 +365,10 @@ if 'data' in st.session_state and not st.session_state.data.empty:
         with col3:
             df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
             df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
-            class_js = df_sorted["Comercio"].tolist()
-            values_js = df_sorted["Monto"].tolist()
+            class_js = json.dumps(df_sorted["Comercio"].tolist())  # Convert Python list to JSON for JavaScript
+            values_js = json.dumps(df_sorted["Monto"].tolist())  # Convert Python list to JSON for JavaScript
             
-            chart_code = """
+            chart_code = f"""
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -377,10 +377,10 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <style>
                     /* Ensure the canvas size fills the container but maintains aspect ratio */
-                    canvas {
+                    canvas {{
                         width: 100% !important;
                         height: auto !important;
-                    }
+                    }}
                 </style>
                 <title>Responsive Chart.js in Streamlit</title>
             </head>
@@ -391,32 +391,31 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 </div>
                 <script>
                     var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {
+                    var myChart = new Chart(ctx, {{
                         type: 'bar',
-                        data: {
+                        data: {{
                             labels: {class_js},
-                            datasets: [{
+                            datasets: [{{
                                 label: '# of Votes',
                                 data: {values_js},
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)'
-                                    ],
-],
+                                ],
                                 borderColor: [
                                     'rgba(255, 99, 132, 1)'
                                 ],
                                 borderWidth: 1
-                            }]
-                        },
-                        options: {
+                            }}]
+                        }},
+                        options: {{
                             maintainAspectRatio: false, // This will allow the height to adjust based on width
-                            scales: {
-                                y: {
+                            scales: {{
+                                y: {{
                                     beginAtZero: true
-                                }
-                            }
-                        }
-                    });
+                                }}
+                            }}
+                        }}
+                    }});
                 </script>
             </body>
             </html>
