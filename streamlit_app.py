@@ -233,13 +233,6 @@ def load_navbar(user_name):
             margin-right: 8px; /* Space between image and text */
         }}
 
-        .profile-img {{
-            width: 32px; /* Set the image size */
-            height: 32px;
-            border-radius: 50%; /* Circular image */
-            margin-right: 8px; /* Space between image and text */
-        }}
-        
         .dropdown-content {{
             display: none;
             position: absolute;
