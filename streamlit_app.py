@@ -291,29 +291,29 @@ st.markdown("")
 st.markdown("")
 
 # Streamlit app
-col1, colA, col2, colB, col3 = st.columns([8,1,9,1,9])
-with col1:  
+col2, colB, col3 = st.columns([9,1,9])
+ 
     
-    uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
-    
-    if uploaded_files:
-        if 'data' not in st.session_state or st.button('Process Statements'):
-            st.session_state.data = process_files(uploaded_files)
-    
-    # Display and edit data using session state
-    if 'data' in st.session_state and not st.session_state.data.empty:
-        edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
+uploaded_files = st.sidebar.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
 
-        if st.button('Generate Graphs'):
-            st.markdown("")
-            with col2:
-                df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
-                df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
-                # Assuming 'Comercio' and 'Monto' columns exist
-                st.bar_chart(df_sorted, x = "Comercio", y = "Monto", use_container_width=True)
-            # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
+if uploaded_files:
+    if 'data' not in st.session_state or st.sidebar.button('Process Statements'):
+        st.session_state.data = process_files(uploaded_files)
 
-            with col3:
-                st.line_chart(edited_data[['Fecha', 'Monto Acumulado']], x = "Fecha", y = "Monto Acumulado", use_container_width=True)
-    else:
-        st.error('No data to display or process.')
+# Display and edit data using session state
+if 'data' in st.session_state and not st.session_state.data.empty:
+    edited_data = st.sidebar.data_editor(st.session_state.data, num_rows="dynamic")
+
+    if st.button('Generate Graphs'):
+        st.markdown("")
+        with col2:
+            df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
+            df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
+            # Assuming 'Comercio' and 'Monto' columns exist
+            st.bar_chart(df_sorted, x = "Comercio", y = "Monto", use_container_width=True)
+        # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
+
+        with col3:
+            st.line_chart(edited_data[['Fecha', 'Monto Acumulado']], x = "Fecha", y = "Monto Acumulado", use_container_width=True)
+else:
+    st.error('No data to display or process.')
