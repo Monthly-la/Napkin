@@ -137,19 +137,6 @@ def process_files(uploaded_files):
             final_dataframe = final_dataframe[["Fecha", "Concepto", "Comercio", "Monto", "Monto Acumulado"]]
     return final_dataframe
 
-def plot_line_graph(df):
-    plt.figure(figsize=(10, 5))
-    for label, df_group in df.groupby('Concepto'):
-        plt.plot(df_group['Fecha'], df_group['Monto Acumulado'], label=label)
-    plt.title('Credit Card Movements Over Time')
-    plt.xlabel('Fecha')
-    plt.ylabel('Monto Acumulado')
-    plt.legend()
-    plt.grid(True)
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    return plt
-
 
 
 
@@ -162,10 +149,11 @@ if uploaded_files:
     processed_data = process_files(uploaded_files)
     if st.button('Process Statements'):
         if not processed_data.empty:
-            st.write('Processed Data', processed_data)
-            st.markdown("")
-            st.bar_chart(processed_data[["Comercio", "Monto"]].groupby(by = "Comercio").sum().reset_index(), x='Comercio', y="Monto", x_label='Comercio', y_label="Monto")
-            st.line_chart(processed_data[["Monto Acumulado", "Fecha"]], x='Fecha', y="Monto Acumulado")
+            st.dataframe('Processed Data', processed_data)
+            if st.button('Generate Graphs'):
+                st.markdown("")
+                st.bar_chart(processed_data[["Comercio", "Monto"]].groupby(by = "Comercio").sum().reset_index(), x='Comercio', y="Monto", x_label='Comercio', y_label="Monto")
+                st.line_chart(processed_data[["Monto Acumulado", "Fecha"]], x='Fecha', y="Monto Acumulado")
 
         else:
             st.error('No data to display.')
