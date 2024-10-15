@@ -135,6 +135,8 @@ def process_files(uploaded_files):
             final_dataframe = final_dataframe.sort_values(by = ["Fecha","Concepto"])
             final_dataframe["Monto Acumulado"] = final_dataframe["Monto"].cumsum()
             final_dataframe = final_dataframe[["Fecha", "Concepto", "Comercio", "Monto", "Monto Acumulado"]]
+            final_dataframe["Comercio"] = final_dataframe["Comercio"].str.title()
+
     return final_dataframe
 
 
