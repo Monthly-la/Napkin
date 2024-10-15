@@ -22,12 +22,12 @@ def load_css():
         .badge {
           background-color: #EEF2F8;
           color: black;
-          padding: 4px 8px;
-          align: center;
+          padding: 8px;
+          justify-content: center;
           border-radius: 5px;
           font-family: Roboto;
           font-weight: 100;
-          font-size: small;
+          font-size: x-small;
           color: gray;
           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
