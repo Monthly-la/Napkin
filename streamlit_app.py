@@ -363,65 +363,63 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 html(chart_code, height=500)
 
         with col3:
-            df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
-            df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
-            class_js = json.dumps(df_sorted["Comercio"].tolist())  # Convert Python list to JSON for JavaScript
-            values_js = json.dumps(df_sorted["Monto"].tolist())  # Convert Python list to JSON for JavaScript
+            if 'data' in st.session_state and not st.session_state.data.empty:
+                edited_data = st.session_state.data  # Data preparation and processing
+                df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
+                df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
+                class_js = json.dumps(df_sorted["Comercio"].tolist())  # Convert Python list to JSON for JavaScript
+                values_js = json.dumps(df_sorted["Monto"].tolist())  # Convert Python list to JSON for JavaScript
             
-            chart_code = f"""
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <style>
-                    /* Ensure the canvas size fills the container but maintains aspect ratio */
-                    canvas {{
-                        width: 100% !important;
-                        height: auto !important;
-                    }}
-                </style>
-                <title>Responsive Chart.js in Streamlit</title>
-            </head>
-            <body>
-                <!-- Adjust the canvas to be more responsive -->
-                <div style="width: 100%;">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <script>
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {{
-                        type: 'bar',
-                        data: {{
-                            labels: {class_js},
-                            datasets: [{{
-                                label: '# of Votes',
-                                data: {values_js},
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)'
-                                ],
-                                borderWidth: 1
-                            }}]
-                        }},
-                        options: {{
-                            maintainAspectRatio: false, // This will allow the height to adjust based on width
-                            scales: {{
-                                y: {{
-                                    beginAtZero: true
+                # Correctly formatted JavaScript and HTML for bar chart
+                chart_code = f"""
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <title>Responsive Bar Chart</title>
+                    <style>
+                        canvas {{
+                            width: 100% !important;
+                            height: auto !important;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div style="width: 100%;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {{
+                            type: 'bar',
+                            data: {{
+                                labels: {class_js},
+                                datasets: [{{
+                                    label: '# of Votes',
+                                    data: {values_js},
+                                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                    borderColor: 'rgba(255, 99, 132, 1)',
+                                    borderWidth: 1
+                                }}]
+                            }},
+                            options: {{
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {{
+                                    y: {{
+                                        beginAtZero: true
+                                    }}
                                 }}
                             }}
-                        }}
-                    }});
-                </script>
-            </body>
-            </html>
-            """
-            
-            # Render the chart in Streamlit
-            html(chart_code, height=500)
+                        }});
+                    </script>
+                </body>
+                </html>
+                """
+                html(chart_code, height=500)
+            else:
+                st.error('No data to display or process.')
 else:
     st.error('No data to display or process.')
