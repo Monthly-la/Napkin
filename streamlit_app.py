@@ -307,10 +307,12 @@ if uploaded_files:
 # Display and edit data using session state
 if 'data' in st.session_state and not st.session_state.data.empty:
     edited_data = st.sidebar.data_editor(st.session_state.data, num_rows="dynamic")
+    
 
     if st.sidebar.button('Generate Graphs'):
         st.markdown("")
         with col2:
+            edited_data = st.session_state.data
             dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
             values_js = edited_data['Monto Acumulado'].tolist()
 
@@ -322,13 +324,13 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <title>Responsive Area Chart</title>
                 <style>
                     canvas {{
                         width: 100% !important;
                         height: auto !important;
                     }}
                 </style>
-                <title>Responsive Area Chart</title>
             </head>
             <body>
                 <div style="width: 100%;">
@@ -377,7 +379,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
             </body>
             </html>
             """
-            
             html(chart_code, height=500)
 
         with col3:
