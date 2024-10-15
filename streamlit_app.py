@@ -295,7 +295,7 @@ st.markdown("")
 # Streamlit app
 tab1, tab2 = st.tabs(["UPLOAD INFO", "DASHBOARD"])
 
-col2, colB, col3 = st.columns([9,1,9])
+
 with tab1: 
     uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
     
@@ -308,7 +308,9 @@ with tab1:
         edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
         
 with tab2:
+    st.markdown("")
     if st.button('Generate Graphs'):
+        col2, colB, col3 = st.columns([9,1,9])
         st.markdown("")
         with col2:
             if 'data' in st.session_state and not st.session_state.data.empty:
