@@ -273,7 +273,9 @@ st.markdown("""
 # Replace 'User Name' with a dynamic user name if you have that functionality
 load_navbar("User Name")
 
-
+st.markdown("")
+st.markdown("")
+st.markdown("")
 
 # Streamlit app
 col1, colA, col2, colB, col3 = st.columns([10,1,9,1,9])
