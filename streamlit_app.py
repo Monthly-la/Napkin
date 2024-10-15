@@ -186,7 +186,7 @@ def load_navbar(user_name):
             border-radius: 10px; /* Rounded corners for links */
         }}
         .navbar a:hover, .dropdown-content a:hover {{
-            background-color: #2e59d9; /* Slightly darker blue on hover */
+            background-color: #DEE6F2; /* Slightly darker blue on hover */
         }}
         .search-container {{
             display: inline-block;
