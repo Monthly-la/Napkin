@@ -20,8 +20,8 @@ def load_css():
             font-family: 'Roboto', sans-serif;
         }
         .badge {
-          background-color: red;
-          color: #EEF2F8;
+          background-color: #EEF2F8;
+          color: white;
           padding: 4px 8px;
           text-align: center;
           border-radius: 5px;
