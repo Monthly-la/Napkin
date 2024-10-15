@@ -364,7 +364,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                         </body>
                     </html>
                     """
-                html(chart_code, height=500)
+                html(chart_code, height=1000)
 
         with col3:
             if 'data' in st.session_state and not st.session_state.data.empty:
@@ -415,7 +415,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 </body>
                 </html>
                 """
-                html(chart_code, height=500)
+                html(chart_code, height=1000)
             else:
                 st.error('No data to display or process.')
 else:
