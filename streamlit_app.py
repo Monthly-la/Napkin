@@ -390,7 +390,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             data: {{
                                 labels: {class_js},
                                 datasets: [{{
-                                    label: '# of Votes',
+                                    label: 'Monto Total (MXN)',
                                     data: {values_js},
                                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                                     borderColor: 'rgba(255, 99, 132, 1)',
