@@ -149,11 +149,11 @@ if uploaded_files:
     processed_data = process_files(uploaded_files)
     if st.button('Process Statements'):
         if not processed_data.empty:
-            st.data_editor(processed_data)
+            edited_data = st.data_editor(processed_data, num_rows="dynamic")
             if st.button('Generate Graphs'):
                 st.markdown("")
-                st.bar_chart(processed_data[["Comercio", "Monto"]].groupby(by = "Comercio").sum().reset_index(), x='Comercio', y="Monto", x_label='Comercio', y_label="Monto")
-                st.line_chart(processed_data[["Monto Acumulado", "Fecha"]], x='Fecha', y="Monto Acumulado")
+                st.bar_chart(edited_data[["Comercio", "Monto"]].groupby(by = "Comercio").sum().reset_index(), x='Comercio', y="Monto", x_label='Comercio', y_label="Monto")
+                st.line_chart(edited_data[["Monto Acumulado", "Fecha"]], x='Fecha', y="Monto Acumulado")
 
         else:
             st.error('No data to display.')
