@@ -368,7 +368,7 @@ with tab2:
                 html(chart_code, height=500)
     
         with col3:
-            st.markdown("Egreso total por Comercio (MXN)")
+            st.markdown("Egreso Total por Comercio (MXN)")
             if 'data' in st.session_state and not st.session_state.data.empty:
                 df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
                 df_sorted = df_summary.sort_values('Monto', ascending=True).reset_index()
