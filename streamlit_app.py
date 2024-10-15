@@ -150,15 +150,9 @@ def plot_line_graph(df):
     plt.tight_layout()
     return plt
 
-def plot_bar_graph(df):
-    plt.figure(figsize=(10, 5))
-    total_per_concept = df.groupby('Concepto')['Monto Acumulado'].sum().sort_values()
-    total_per_concept.plot(kind='barh')
-    plt.title('Total Spent Per Commercial Provider')
-    plt.xlabel('Total Amount')
-    plt.ylabel('Provider')
-    plt.tight_layout()
-    return plt
+
+
+
 
 # Streamlit app
 st.title('Credit Card Statement Processor')
@@ -169,10 +163,8 @@ if uploaded_files:
     if st.button('Process Statements'):
         if not processed_data.empty:
             st.write('Processed Data', processed_data)
-            line_graph = plot_line_graph(processed_data)
-            bar_graph = plot_bar_graph(processed_data)
-            
-            st.pyplot(line_graph)
-            st.pyplot(bar_graph)
+            st.bar_chart(processed_data.groupby('Concepto')['Monto'].sum().sort_values(), x='Comercio', y="Monto")
+            st.line_chart(processed_data[["Monto Acumulado", "Fecha"]])
+
         else:
             st.error('No data to display.')
