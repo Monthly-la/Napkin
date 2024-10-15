@@ -23,7 +23,7 @@ def load_css():
           background-color: #EEF2F8;
           color: black;
           padding: 4px 8px;
-          text-align: center;
+          align: center;
           border-radius: 5px;
           font-family: Roboto;
           font-weight: 100;
