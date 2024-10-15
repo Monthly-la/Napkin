@@ -201,7 +201,7 @@ def load_navbar(user_name):
         .search-container button {{
             padding: 7px 10px;
             background: #EEF2F8;
-            color: white;
+            color: #8E9CB0;
             font-size: 14px;
             border: none;
             cursor: pointer;
