@@ -30,6 +30,7 @@ def load_css():
         }
         canvas {
             width: 100% !important;
+            height: 500px;
         }
     </style>
     """
