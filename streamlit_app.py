@@ -300,7 +300,7 @@ uploaded_files = st.sidebar.file_uploader("Upload PDF statements", accept_multip
 
 if uploaded_files:
     if 'data' not in st.session_state or st.sidebar.button('Process Statements'):
-        st.session_state.data = process_files(uploaded_files)
+        st.session_state.data = process_files(uploaded_files, num_rows="dynamic")
 
 # Display and edit data using session state
 if 'data' in st.session_state and not st.session_state.data.empty:
