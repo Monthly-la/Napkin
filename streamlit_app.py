@@ -9,8 +9,6 @@ import openai
 from streamlit.components.v1 import html
 import json
 
-
-pd.options.display.float_format = "{:,.2f}".format
 st.set_page_config(layout="wide")
 
 # Function to load custom CSS
@@ -28,6 +26,7 @@ def load_css():
 # Load the custom CSS
 load_css()
 
+pd.options.display.float_format = "{:,.2f}".format
 def extract_data_from_pdf(byte_data, bank_name):
     """
     Extracts all text from a PDF file using pdfplumber.
