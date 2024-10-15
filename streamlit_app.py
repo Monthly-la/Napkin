@@ -304,7 +304,7 @@ if uploaded_files:
 
 # Display and edit data using session state
 if 'data' in st.session_state and not st.session_state.data.empty:
-    edited_data = st.sidebar.data_editor(st.session_state.data, num_rows="dynamic")
+    edited_data = st.sidebar.data_editor(st.session_state.data)
     
 
     if st.sidebar.button('Generate Graphs'):
