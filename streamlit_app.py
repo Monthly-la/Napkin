@@ -168,7 +168,7 @@ def load_navbar(user_name):
         .navbar {{
             width: 100%;
             background-color: #EEF2F8; /* Deep blue background */
-            color: gray;
+            color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -179,7 +179,7 @@ def load_navbar(user_name):
         }}
         .navbar a, .dropdown-content a {{
             padding: 12px;
-            color: #66707E;
+            color: white;
             text-decoration: none;
             font-size: 14px;
             text-align: center;
