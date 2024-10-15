@@ -181,7 +181,7 @@ def load_navbar(user_name):
             padding: 12px;
             color: white;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px;
             text-align: center;
             border-radius: 10px; /* Rounded corners for links */
         }}
@@ -193,7 +193,7 @@ def load_navbar(user_name):
         }}
         input[type="text"] {{
             padding: 7px;
-            font-size: 16px;
+            font-size: 14px;
             border: none;
             width: 300px;
             border-radius: 10px; /* Rounded corners for the input field */
@@ -202,7 +202,7 @@ def load_navbar(user_name):
             padding: 7px 10px;
             background: #2e59d9;
             color: white;
-            font-size: 16px;
+            font-size: 14px;
             border: none;
             cursor: pointer;
             border-radius: 10px; /* Rounded corners for the button */
@@ -218,7 +218,7 @@ def load_navbar(user_name):
             background-color: inherit;
             color: white;
             padding: 12px;
-            font-size: 16px;
+            font-size: 14px;
             border: none;
             cursor: pointer;
             border-radius: 10px; /* Rounded corners for the dropdown button */
