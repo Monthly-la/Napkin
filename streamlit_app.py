@@ -348,33 +348,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                     borderColor: 'rgb(78, 115, 223)',
                                     tension: 0.3
                                 }}]
-                            }},
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            return tooltipItem.yLabel.toLocaleString(undefined, {
-                                                minimumFractionDigits: 2,
-                                                maximumFractionDigits: 2
-                                            });
-                                        }
-                                    }
-                                },
-                                scales: {
-                                    y: {
-                                        ticks: {
-                                            callback: function(value) {
-                                                return Number(value).toLocaleString(undefined, {
-                                                    minimumFractionDigits: 2,
-                                                    maximumFractionDigits: 2
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-                            },
+                            }}
                         }});
                     </script>
                 </body>
