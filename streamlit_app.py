@@ -21,7 +21,7 @@ def load_css():
         }
         .badge {
           background-color: red;
-          color: white;
+          color: #EEF2F8;
           padding: 4px 8px;
           text-align: center;
           border-radius: 5px;
