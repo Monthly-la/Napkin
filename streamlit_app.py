@@ -200,7 +200,7 @@ def load_navbar(user_name):
         }}
         .search-container button {{
             padding: 7px 10px;
-            background: #E6ECF5;
+            background: #EEF2F8;
             color: white;
             font-size: 14px;
             border: none;
