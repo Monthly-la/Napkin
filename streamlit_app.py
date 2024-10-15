@@ -312,81 +312,81 @@ if 'data' in st.session_state and not st.session_state.data.empty:
     if st.sidebar.button('Generate Graphs'):
         st.markdown("")
         with col2:
-        if 'data' in st.session_state and not st.session_state.data.empty:
-            edited_data = st.session_state.data  # Assuming this is already correctly filled
-            dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
-            values_js = edited_data['Monto Acumulado'].tolist()
-        
-            # Log data to make sure it's correct
-            st.write("Dates for JS:", dates_js)
-            st.write("Values for JS:", values_js)
-        
-            # Embedding the chart in an HTML block with the data injected
-            chart_code = f"""
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <title>Responsive Area Chart</title>
-                <style>
-                    canvas {{
-                        width: 100% !important;
-                        height: auto !important;
-                    }}
-                </style>
-            </head>
-            <body>
-                <div style="width: 100%;">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <script>
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {{
-                        type: 'line',
-                        data: {{
-                            labels: {dates_js},
-                            datasets: [{{
-                                label: 'Monto Acumulado',
-                                data: {values_js},
-                                fill: true,
-                                backgroundColor: 'rgba(78, 115, 223, 0.1)',
-                                borderColor: 'rgb(78, 115, 223)',
-                                tension: 0.3
-                            }}]
-                        }},
-                        options: {{
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {{
-                                x: {{
-                                    type: 'time',
-                                    time: {{
-                                        unit: 'day'
+            if 'data' in st.session_state and not st.session_state.data.empty:
+                edited_data = st.session_state.data  # Assuming this is already correctly filled
+                dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
+                values_js = edited_data['Monto Acumulado'].tolist()
+            
+                # Log data to make sure it's correct
+                st.write("Dates for JS:", dates_js)
+                st.write("Values for JS:", values_js)
+            
+                # Embedding the chart in an HTML block with the data injected
+                chart_code = f"""
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <title>Responsive Area Chart</title>
+                    <style>
+                        canvas {{
+                            width: 100% !important;
+                            height: auto !important;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div style="width: 100%;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {{
+                            type: 'line',
+                            data: {{
+                                labels: {dates_js},
+                                datasets: [{{
+                                    label: 'Monto Acumulado',
+                                    data: {values_js},
+                                    fill: true,
+                                    backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                                    borderColor: 'rgb(78, 115, 223)',
+                                    tension: 0.3
+                                }}]
+                            }},
+                            options: {{
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {{
+                                    x: {{
+                                        type: 'time',
+                                        time: {{
+                                            unit: 'day'
+                                        }},
+                                        title: {{
+                                            display: true,
+                                            text: 'Fecha'
+                                        }}
                                     }},
-                                    title: {{
-                                        display: true,
-                                        text: 'Fecha'
-                                    }}
-                                }},
-                                y: {{
-                                    beginAtZero: true,
-                                    title: {{
-                                        display: true,
-                                        text: 'Monto Acumulado'
+                                    y: {{
+                                        beginAtZero: true,
+                                        title: {{
+                                            display: true,
+                                            text: 'Monto Acumulado'
+                                        }}
                                     }}
                                 }}
                             }}
-                        }}
-                    }});
-                </script>
-            </body>
-            </html>
-            """
-            html(chart_code, height=500)
-        else:
-            st.error('No data to display or process.')
+                        }});
+                    </script>
+                </body>
+                </html>
+                """
+                html(chart_code, height=500)
+            else:
+                st.error('No data to display or process.')
 
         with col3:
             df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
