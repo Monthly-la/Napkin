@@ -7,6 +7,7 @@ from datetime import datetime
 import io
 import openai
 
+pd.options.display.float_format = "{:,.2f}".format
 st.set_page_config(layout="wide")
 
 # Function to load custom CSS
