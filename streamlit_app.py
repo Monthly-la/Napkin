@@ -317,7 +317,7 @@ with tab1:
 with tab2:
     st.markdown("")
     if graphs:
-        col2, colB, col3 = st.columns([9,1,9])
+        col2, colB, col3 = st.columns([11,1,11])
         st.markdown("")
         with col2:
             if 'data' in st.session_state and not st.session_state.data.empty:
