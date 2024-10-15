@@ -297,7 +297,7 @@ tab1, tab2 = st.tabs(["UPLOAD INFO 📤", "DASHBOARD 📊"])
 graphs = False
 
 with tab1: 
-col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
         
