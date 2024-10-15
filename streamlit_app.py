@@ -163,13 +163,12 @@ def load_navbar(user_name):
     <style>
         body {{
             margin: 0;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }}
         .navbar {{
             width: 100%;
             background-color: #4e73df; /* Deep blue background */
             color: white;
-            overflow: hidden; /* Adjusted to hide overflow */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -235,7 +234,8 @@ def load_navbar(user_name):
         }}
         .dropdown:hover .dropdown-content {{
             display: block;
-            top: 100%; /* Start right below the dropdown button */
+            top: 100%; /* Adjust this if the dropdown still clips */
+            left: 0;
         }}
     </style>
 
@@ -260,12 +260,13 @@ def load_navbar(user_name):
 # Include Google Fonts
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     </style>
     """, unsafe_allow_html=True)
 
 # Replace 'User Name' with a dynamic user name if you have that functionality
 load_navbar("User Name")
+
 
 
 # Streamlit app
