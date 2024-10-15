@@ -293,7 +293,7 @@ st.markdown("")
 st.markdown("")
 
 # Streamlit app
-tab1, tab2 = st.tabs(["UPLOAD INFO", "DASHBOARD"])
+tab1, tab2 = st.tabs(["UPLOAD INFO 📤", "DASHBOARD 📊"])
 
 
 with tab1: 
