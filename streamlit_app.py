@@ -200,7 +200,7 @@ def load_navbar(user_name):
         }}
         .search-container button {{
             padding: 7px 10px;
-            background: #2e59d9;
+            background: #E6ECF5;
             color: white;
             font-size: 14px;
             border: none;
@@ -208,7 +208,7 @@ def load_navbar(user_name):
             border-radius: 10px; /* Rounded corners for the button */
         }}
         .search-container button:hover {{
-            background: #224abe;
+            background: #DEE6F2;
         }}
         .dropdown {{
             position: relative;
