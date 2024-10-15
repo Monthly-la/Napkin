@@ -160,8 +160,8 @@ if 'data' in st.session_state and not st.session_state.data.empty:
     if st.button('Generate Graphs'):
         st.markdown("")
         # Assuming 'Comercio' and 'Monto' columns exist
-        st.bar_chart(edited_data[['Comercio', 'Monto']].groupby('Comercio').sum().sort_values(by = "Monto", ascending = False))
+        st.bar_chart(edited_data[['Comercio', 'Monto']].groupby('Comercio').sum().sort_values(by = "Monto", ascending = False), use_container_width=True)
         # Assuming 'Monto Acumulado' and 'Fecha' columns exist for line chart
-        st.line_chart(edited_data[['Fecha', 'Monto Acumulado']], x = "Fecha", y = "Monto Acumulado")
+        st.line_chart(edited_data[['Fecha', 'Monto Acumulado']], x = "Fecha", y = "Monto Acumulado", use_container_width=True)
 else:
     st.error('No data to display or process.')
