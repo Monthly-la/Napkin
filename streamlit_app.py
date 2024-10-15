@@ -161,75 +161,72 @@ def process_files(uploaded_files):
 def load_navbar(user_name):
     navbar_html = f"""
     <style>
+        body {{
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+        }}
         .navbar {{
             width: 100%;
-            background-color: #f8f9fc;
+            background-color: #4e73df; /* Deep blue background */
+            color: white;
             overflow: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }}
         .navbar a, .dropdown-content a {{
-            float: left;
             padding: 12px;
-            color: black;
+            color: white;
             text-decoration: none;
-            font-size: 17px;
-            width: 150px; /* Define width here */
+            font-size: 16px;
             text-align: center;
         }}
         .navbar a:hover, .dropdown-content a:hover {{
-            background-color: #ddd;
+            background-color: #2e59d9; /* Slightly darker blue on hover */
         }}
         .search-container {{
             display: inline-block;
         }}
-        input[type=text] {{
+        input[type="text"] {{
             padding: 7px;
-            margin-top: 8px;
-            font-size: 17px;
+            font-size: 16px;
             border: none;
-            width: 300px; /* width of the search bar */
+            width: 300px;
         }}
         .search-container button {{
-            float: right;
             padding: 7px 10px;
-            margin-top: 8px;
-            margin-right: 16px;
-            background: #ddd;
-            font-size: 17px;
+            background: #2e59d9;
+            color: white;
+            font-size: 16px;
             border: none;
             cursor: pointer;
         }}
         .search-container button:hover {{
-            background: #ccc;
+            background: #224abe;
         }}
         .dropdown {{
-            float: left;
-            overflow: hidden;
+            position: relative;
+            display: inline-block;
         }}
-        .dropdown .dropbtn {{
-            font-size: 17px;    
-            border: none;
-            outline: none;
-            color: black;
-            padding: 14px 16px;
+        .dropbtn {{
             background-color: inherit;
-            font-family: inherit; /* Necessary for vertical align on mobile phones */
-            margin: 0; /* Important for vertical align on mobile phones */
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
         }}
         .dropdown-content {{
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
+            background-color: #f1f1f1;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }}
         .dropdown-content a {{
-            float: none;
             color: black;
             padding: 12px 16px;
             text-decoration: none;
@@ -244,9 +241,9 @@ def load_navbar(user_name):
     <div class="navbar">
         <a href="#home">Home</a>
         <div class="search-container">
-            <input type="text" placeholder="Search..">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
         </div>
-        <a href="#notification">Notifications</a>
         <div class="dropdown">
             <button class="dropbtn">{user_name} &#9662;</button>
             <div class="dropdown-content">
@@ -259,8 +256,16 @@ def load_navbar(user_name):
     """
     st.markdown(navbar_html, unsafe_allow_html=True)
 
+# Include Google Fonts
+st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+    </style>
+    """, unsafe_allow_html=True)
+
 # Replace 'User Name' with a dynamic user name if you have that functionality
 load_navbar("User Name")
+
 
 # Streamlit app
 col1, colA, col2, colB, col3 = st.columns([10,1,9,1,9])
