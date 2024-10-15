@@ -316,12 +316,8 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                 edited_data = st.session_state.data  # Assuming this is already correctly filled
                 dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
                 values_js = edited_data['Monto Acumulado'].tolist()
-            
-                # Log data to make sure it's correct
-                st.write("Dates for JS:", dates_js)
-                st.write("Values for JS:", values_js)
-            
-                # Embedding the chart in an HTML block with the data injected
+                
+                # Chart with actual data
                 chart_code = f"""
                 <!DOCTYPE html>
                 <html lang="en">
@@ -329,7 +325,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <title>Simple Area Chart</title>
+                    <title>Area Chart with Actual Data</title>
                     <style>
                         canvas {{
                             width: 100% !important;
@@ -346,10 +342,10 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                         var myChart = new Chart(ctx, {{
                             type: 'line',
                             data: {{
-                                labels: ['January', 'February', 'March', 'April', 'May'],
+                                labels: {dates_js},
                                 datasets: [{{
-                                    label: 'Sample Data',
-                                    data: [10, 20, 30, 40, 50],
+                                    label: 'Monto Acumulado',
+                                    data: {values_js},
                                     fill: true,
                                     backgroundColor: 'rgba(78, 115, 223, 0.1)',
                                     borderColor: 'rgb(78, 115, 223)',
