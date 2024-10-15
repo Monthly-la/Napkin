@@ -12,12 +12,24 @@ import json
 st.set_page_config(layout="wide")
 
 # Function to load custom CSS
+
 def load_css():
     css = """
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         html, body, [class*="css"] {
             font-family: 'Roboto', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            padding: 20px;
+            margin-top: 10px;
+        }
+        canvas {
+            width: 100% !important;
+            height: auto !important;
         }
     </style>
     """
@@ -331,7 +343,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             </style>
                         </head>
                         <body>
-                            <div style="width: 100%;">
+                            <div class="card">
                                 <canvas id="myChart"></canvas>
                             </div>
                             <script>
@@ -380,7 +392,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     </style>
                 </head>
                 <body>
-                    <div style="width: 100%;">
+                    <div class="card">
                         <canvas id="myChart"></canvas>
                     </div>
                     <script>
