@@ -12,25 +12,12 @@ import json
 st.set_page_config(layout="wide")
 
 # Function to load custom CSS
-
 def load_css():
     css = """
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         html, body, [class*="css"] {
             font-family: 'Roboto', sans-serif;
-        }
-        .card {
-            background-color: red;  /* Change this to a bright color temporarily */
-            border: 2px solid green;  /* Adds a green border for high visibility */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            padding: 10px;
-            margin-top: 5px;
-        }
-        canvas {
-            width: 100% !important;
-            height: 500px !important;
         }
     </style>
     """
@@ -336,9 +323,15 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                             <title>Area Chart with Actual Data</title>
+                            <style>
+                                canvas {{
+                                    width: 100% !important;
+                                    height: auto !important;
+                                }}
+                            </style>
                         </head>
                         <body>
-                            <div class="card">
+                            <div style="width: 100%;">
                                 <canvas id="myChart"></canvas>
                             </div>
                             <script>
@@ -355,10 +348,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                             borderColor: 'rgb(78, 115, 223)',
                                             tension: 0.3
                                         }}]
-                                    }},
-                                    options: {{
-                                        responsive: true,
-                                        maintainAspectRatio: false
                                     }}
                                 }});
                             </script>
@@ -383,9 +372,15 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     <title>Responsive Bar Chart</title>
+                    <style>
+                        canvas {{
+                            width: 100% !important;
+                            height: auto !important;
+                        }}
+                    </style>
                 </head>
                 <body>
-                    <div class="card">
+                    <div style="width: 100%;">
                         <canvas id="myChart"></canvas>
                     </div>
                     <script>
