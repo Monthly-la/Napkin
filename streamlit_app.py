@@ -158,7 +158,8 @@ def process_files(uploaded_files):
 
 
 
-def load_navbar(user_name):
+def load_navbar(user_name, image_url):
+
     navbar_html = f"""
     <style>
         body {{
