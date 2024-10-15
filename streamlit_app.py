@@ -312,7 +312,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
         st.markdown("")
         with col2:
             if 'data' in st.session_state and not st.session_state.data.empty:
-                edited_data = st.session_state.data  # Assuming this is already correctly filled
                 dates_js = edited_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()  # Format dates as strings
                 values_js = edited_data['Monto Acumulado'].tolist()
                 
@@ -364,7 +363,6 @@ if 'data' in st.session_state and not st.session_state.data.empty:
 
         with col3:
             if 'data' in st.session_state and not st.session_state.data.empty:
-                edited_data = st.session_state.data  # Data preparation and processing
                 df_summary = edited_data[['Comercio', 'Monto']].groupby('Comercio').sum()
                 df_sorted = df_summary.sort_values('Monto', ascending=False).reset_index()
                 class_js = json.dumps(df_sorted["Comercio"].tolist())  # Convert Python list to JSON for JavaScript
