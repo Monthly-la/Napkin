@@ -341,7 +341,7 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                             labels: {list(edited_data["Fecha"])},
                             datasets: [{{
                                 label: 'Monto Acumulado',
-                                data: {list(edited_data["Monto Acumulado])},
+                                data: {list(edited_data["Monto Acumulado"])},
                                 fill: true,
                                 backgroundColor: 'rgba(78, 115, 223, 0.1)',
                                 borderColor: 'rgb(78, 115, 223)',
