@@ -348,7 +348,44 @@ if 'data' in st.session_state and not st.session_state.data.empty:
                                     borderColor: 'rgb(78, 115, 223)',
                                     tension: 0.3
                                 }}]
-                            }}
+                            }},
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                tooltips: {
+                                    enabled: true,
+                                    mode: 'index',
+                                    intersect: false, // This ensures tooltips are shown not just when hovering directly over the element
+                                    position: 'nearest', // This can make tooltips appear when the hover is close to the element
+                                    backgroundColor: 'rgba(255,255,255,0.8)', // Light background for tooltip
+                                    titleFontColor: '#6e707e', // Gray color for title
+                                    bodyFontColor: '#858796', // Slightly darker gray for body
+                                    borderColor: '#dddfeb', // Light gray border
+                                    borderWidth: 1,
+                                    xPadding: 15,
+                                    yPadding: 15,
+                                    displayColors: false, // Set to false if you do not want to display color boxes
+                                    caretPadding: 10,
+                                    cornerRadius: 6, // Rounded corners for the tooltip
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            let label = data.datasets[tooltipItem.datasetIndex].label || '';
+                                            let value = tooltipItem.yLabel.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                            return `${label}: ${value}`; // Custom label formatting
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true,
+                                            callback: function(value) {
+                                                return Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                            }
+                                        }
+                                    }]
+                                }
+                            }
                         }});
                     </script>
                 </body>
