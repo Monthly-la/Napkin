@@ -42,7 +42,7 @@ load_css()
 
 hide_streamlit_style = """
 <style>
-#MainMenu {visibility: hidden;}
+
 footer {visibility: hidden;}
 footer:after {
 	content:'goodbye'; 
