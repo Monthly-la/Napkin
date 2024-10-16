@@ -326,8 +326,8 @@ with tab1:
         if 'data' in st.session_state and not st.session_state.data.empty:
             edited_data = st.data_editor(st.session_state.data, num_rows="dynamic")
         
-        if st.button('Generate Graphs'):
-            graphs = True
+            if st.button('Generate Graphs'):
+                graphs = True
 
         
 with tab2:
