@@ -45,6 +45,7 @@ hide_streamlit_style = """
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 .css-hi6a2p {padding-top: 0rem;}
+.stDeployButton {visibility: hidden;}
 </style>
 
 """
