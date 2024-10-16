@@ -313,7 +313,7 @@ graphs = False
 with tab1: 
     st.markdown("")
     st.markdown("")
-    padA, col1, colA, col2, padB= st.columns([1,8,1,8,1])
+    padA, col1, colA, col2, padB= st.columns([1,9,1,9,1])
     with col1:
         uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
         
