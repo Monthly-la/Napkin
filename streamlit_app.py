@@ -40,6 +40,15 @@ def load_css():
 # Load the custom CSS
 load_css()
 
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
 pd.options.display.float_format = "{:,.2f}".format
 def extract_data_from_pdf(byte_data, bank_name):
     """
