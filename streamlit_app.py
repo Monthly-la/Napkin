@@ -355,11 +355,11 @@ with tab1:
 						       options=bank_cards[banks_selected[i]],
 						       key=f"card_type_{i}"))
 		
-		# Submit button
-		if st.button("Submit"):
-		st.write("Submitted Information:")
-		for i in range(int(num_cards)):
-		    st.write(f"Card {i + 1}: Bank - {banks_selected[i]}, Card Type - {cards_selected[i]}")
+	# Submit button
+	if st.button("Submit"):
+	st.write("Submitted Information:")
+	for i in range(int(num_cards)):
+	    st.write(f"Card {i + 1}: Bank - {banks_selected[i]}, Card Type - {cards_selected[i]}")
 		
 	with tab2: 
 	st.markdown("")
