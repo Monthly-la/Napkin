@@ -334,12 +334,60 @@ with tab1:
 	st.markdown("")
 	st.markdown("")
 	bank_cards = {
-		"Banamex": ["Tarjeta Básica", "Tarjeta Oro", "Platinum Card"],
-		"BBVA Bancomer": ["Tarjeta Azul", "Tarjeta Oro", "Tarjeta Platinum"],
-		"Banorte": ["Tarjeta Clásica", "Tarjeta Oro", "Tarjeta Platinum"],
-		"Santander": ["Tarjeta Light", "Tarjeta Free", "Tarjeta Zero"],
-		"HSBC": ["Tarjeta Clásica", "Tarjeta Oro", "Tarjeta Platinum"]
-		}
+	    'ABC Capital': ['Ualá ABC (ABC Capital)'],
+	    'Afirme': ['HEB Afirme', 'Afirme Clásica', 'Tigres Afirme', 'Afirme Platinum'],
+	    'BBVA': [
+	        'Crea BBVA', 'Azul BBVA', 'IPN BBVA', 'Rayados BBVA', 'Vive BBVA', 
+	        'Afinidad UNAM BBVA', 'Oro BBVA', 'Platinum BBVA', 'Infinite BBVA'
+	    ],
+	    'BanBajío': [
+	        'Visa Clásica Garantizada Internacional (Bajío)', 'Visa Clásica Internacional (Bajío)', 
+	        'Visa Oro Internacional (Bajío)', 'Visa Platinum Internacional (Bajío)'
+	    ],
+	    'BanCoppel': ['Tarjeta de Crédito BanCoppel', 'BanCoppel Oro'],
+	    'Banco Azteca': ['Oro (Banco Azteca)'],
+	    'Banorte': [
+	        'Banorte Básica', 'Banorte Conmigo', 'AT&T (Banorte)', 'Clásica (Banorte)', 
+	        'Tarjeta 40 (Banorte)', 'Ke Buena (Banorte)', 'W Radio (Banorte)', 'Mujer Banorte', 
+	        'Oro (Banorte)', 'Selección Nacional (Banorte)', 'Banorte Por Ti', 'Marriott Bonvoy (Banorte)', 
+	        'AT&T Elite (Banorte)', 'Platinum (Banorte)', 'United (Banorte)', 'Marriott Bonvoy Inspire (Banorte)', 
+	        'United Universe (Banorte)', 'Infinite (Banorte)'
+	    ],
+	    'Banregio': [
+	        'Clásica (Banregio)', 'Gold (Banregio)', 'Hey (Banregio)', 'Más (Banregio)', 
+	        'Platinum (Banregio)', 'Tarjeta Banregio'
+	    ],
+	    'Citibanamex': [
+	        'Citibanamex Simplicity', 'Costco Citibanamex', 'Teletón Citibanamex', 'The Home Depot Citibanamex', 
+	        'Affinity Card Citibanamex', 'Clásica Citibanamex', 'Citibanamex Rewards', 'Oro Citibanamex', 
+	        'Citibanamex Premier', 'Platinum Citibanamex', 'Citibanamex Prestige'
+	    ],
+	    'HSBC': [
+	        'HSBC 2Now', 'HSBC Zero', 'HSBC Viva', 'HSBC Air', 'HSBC Advance Platinum', 
+	        'HSBC Viva Plus', 'HSBC Premier World Elite'
+	    ],
+	    'INVEX': [
+	        'Volaris INVEX 0', 'Despegar INVEX Gold', 'Volaris INVEX', 
+	        'Despegar INVEX Platinum', 'Volaris INVEX 2.0'
+	    ],
+	    'Inbursa': [
+	        'Inbursa Clásica', 'Inbursa Oro', 'Inbursa Óptima', "Inbursa Sam's Club", 
+	        'Inbursa Walmart', 'Inbursa Black American Express'
+	    ],
+	    'Mifel': ['Mifel Oro', 'Mifel Platino', 'Mifel World Elite'],
+	    'Santander': [
+	        'LikeU (Santander)', 'Samsung Members (Santander)', 'Santander Aeroméxico Blanca', 
+	        'Santander American Express', 'Santander Free', 'Santander Zero', 'Fiesta Rewards Oro (Santander)', 
+	        'Fiesta Rewards Platino (Santander)', 'Santader Platinum', 'Santander Aeroméxico Platinum', 
+	        'Santander Aeroméxico Infinite', 'Santander World Elite'
+	    ],
+	    'Scotiabank': [
+	        'IDEAL Scotiabank', 'Scotia Travel Clásica', 'Scotia Travel Oro', 'Scotia Travel Platinum', 
+	        'Scotiabank AAdvantage Platinum', 'Scotia Travel World Elite', 'Scotiabank AAdvantage World Elite', 
+	        'Scotiabank Visa Signature'
+	    ]
+	}
+
 	# Define the layout: 3 columns
 	pad1, col1, pad2, col2, pad3, col3, pad4 = st.columns([1,4,1,4,1,4,1])
 	
