@@ -389,7 +389,7 @@ with tab1:
 	}
 
 	# Define the layout: 3 columns
-	pad1, col1, pad2, col2, pad3, col3, pad4 = st.columns([1,4,1,4,1,4,1])
+	pad1, col1, pad2, col2, pad3, col3, pad4, col4, pad5 = st.columns([1,4,1,4,1,4,1,4,1])
 	
 	# Column 1: Number of cards input
 	with col1:
