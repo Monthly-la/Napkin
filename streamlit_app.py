@@ -330,6 +330,9 @@ st.markdown("")
 tab1, tab2, tab3 = st.tabs(["SELECT CARDS 💳", "UPLOAD INFO 📤", "DASHBOARD 📊"])
 graphs = False
 with tab1:
+	st.markdown("")
+	st.markdown("")
+	st.markdown("")
 	bank_cards = {
 		"Banamex": ["Tarjeta Básica", "Tarjeta Oro", "Platinum Card"],
 		"BBVA Bancomer": ["Tarjeta Azul", "Tarjeta Oro", "Tarjeta Platinum"],
@@ -340,7 +343,7 @@ with tab1:
 	st.title("Credit Card Dashboard")
 
 	# Define the layout: 3 columns
-	col1, col2, col3 = st.columns(3)
+	pad1, col1, pad2, col2, pad3, col3, pad4 = st.columns([1,4,1,4,1,4,1])
 	
 	# Column 1: Number of cards input
 	with col1:
