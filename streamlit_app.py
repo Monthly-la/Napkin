@@ -361,26 +361,26 @@ with tab1:
 		for i in range(int(num_cards)):
 		    st.write(f"Card {i + 1}: Bank - {banks_selected[i]}, Card Type - {cards_selected[i]}")
 		
-	with tab2: 
+with tab2: 
 	st.markdown("")
 	st.markdown("")
 	padA, col1, colA, col2, padB= st.columns([1,11,2,11,2])
 	with col1:
-	uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
+		uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
 	
-	if uploaded_files:
-	    if 'data' not in st.session_state or st.button('Process Statements'):
-		st.session_state.data = process_files(uploaded_files)
+		if uploaded_files:
+		    if 'data' not in st.session_state or st.button('Process Statements'):
+			st.session_state.data = process_files(uploaded_files)
 	
 	with col2:
-	st.markdown("")
-	st.markdown("")
-	# Display and edit data using session state
-	if 'data' in st.session_state and not st.session_state.data.empty:
-	    edited_data = st.data_editor(st.session_state.data, num_rows="dynamic", hide_index=True)
-	
-	    if st.button('Generate Graphs'):
-		graphs = True
+		st.markdown("")
+		st.markdown("")
+		# Display and edit data using session state
+		if 'data' in st.session_state and not st.session_state.data.empty:
+		    edited_data = st.data_editor(st.session_state.data, num_rows="dynamic", hide_index=True)
+		
+		    if st.button('Generate Graphs'):
+			graphs = True
 
         
 with tab3:
