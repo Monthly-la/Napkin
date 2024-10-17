@@ -410,7 +410,7 @@ with tab1:
 		    cards_selected.append(st.selectbox(f"Select the type for card {i + 1}:",
 						       options=bank_cards[banks_selected[i]],
 						       key=f"card_type_{i}"))
-	     		st.markdown("")
+	     	    st.markdown("")
 	     		
 		
 	# Submit button
