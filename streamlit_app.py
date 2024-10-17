@@ -377,10 +377,10 @@ with tab2:
 		st.markdown("")
 		# Display and edit data using session state
 		if 'data' in st.session_state and not st.session_state.data.empty:
-		    edited_data = st.data_editor(st.session_state.data, num_rows="dynamic", hide_index=True)
+  			edited_data = st.data_editor(st.session_state.data, num_rows="dynamic", hide_index=True)
 		
-  		if st.button('Generate Graphs'):
-    			graphs = True
+		if st.button('Generate Graphs'):
+			graphs = True
 
         
 with tab3:
