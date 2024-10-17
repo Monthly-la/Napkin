@@ -400,12 +400,14 @@ with tab1:
 		banks_selected = []
 		for i in range(int(num_cards)):
   			banks_selected.append(st.selectbox(f"Select the bank for card {i + 1}:", options=list(bank_cards.keys()), key=f"bank_{i}"))
+     			st.text("")
 	
 	# Column 3: Dropdowns for selecting the card type based on selected bank
 	with col3:
 		cards_selected = []
 		for i in range(int(num_cards)):
   			cards_selected.append(st.selectbox(f"Select the type for card {i + 1}:", options=bank_cards[banks_selected[i]], key=f"card_type_{i}"))
+     			st.text("")
 	     		
 		
 	# Submit button
