@@ -331,32 +331,32 @@ tab1, tab2, tab3 = st.tabs(["SELECT CARDS 💳", "UPLOAD INFO 📤", "DASHBOARD 
 graphs = False
 with tab1: 
 	with st.form("card_info_form"):
-        # Number of cards
-        num_cards = st.number_input("Enter the number of credit cards:", min_value=1, max_value=10, step=1, format='%d')
-        
-        # This will hold all the cards' information
-        cards_data = []
-
-        # Ask details for each card
-        for i in range(int(num_cards)):
-            st.subheader(f"Card {i + 1}")
-            # Bank of the card
-            bank = st.selectbox("Select the bank of the card:",
-                                options=["Bank of America", "Chase", "Wells Fargo", "CitiBank", "Other"],
-                                key=f"bank_{i}")
-            # Type of the card
-            card_type = st.selectbox("Select the type of the card:",
-                                     options=["Debit", "Credit", "Prepaid"],
-                                     key=f"type_{i}")
-
-            cards_data.append({"bank": bank, "type": card_type})
-        
-        # Submit button for the form
-        submitted = st.form_submit_button("Submit")
-        if submitted:
-            st.write("Cards' Details Submitted:")
-            for index, card in enumerate(cards_data, start=1):
-                st.write(f"Card {index}: Bank - {card['bank']}, Type - {card['type']}")
+		# Number of cards
+		num_cards = st.number_input("Enter the number of credit cards:", min_value=1, max_value=10, step=1, format='%d')
+		
+		# This will hold all the cards' information
+		cards_data = []
+		
+		# Ask details for each card
+		for i in range(int(num_cards)):
+		    st.subheader(f"Card {i + 1}")
+		    # Bank of the card
+		    bank = st.selectbox("Select the bank of the card:",
+					options=["Bank of America", "Chase", "Wells Fargo", "CitiBank", "Other"],
+					key=f"bank_{i}")
+		    # Type of the card
+		    card_type = st.selectbox("Select the type of the card:",
+					     options=["Debit", "Credit", "Prepaid"],
+					     key=f"type_{i}")
+		
+		    cards_data.append({"bank": bank, "type": card_type})
+		
+		# Submit button for the form
+		submitted = st.form_submit_button("Submit")
+		if submitted:
+		    st.write("Cards' Details Submitted:")
+		    for index, card in enumerate(cards_data, start=1):
+			st.write(f"Card {index}: Bank - {card['bank']}, Type - {card['type']}")
 		
 with tab2: 
     st.markdown("")
