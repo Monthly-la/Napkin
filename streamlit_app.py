@@ -368,9 +368,9 @@ with tab2:
 	with col1:
 		uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
 	
-		if uploaded_files:
-		    if 'data' not in st.session_state or st.button('Process Statements'):
-			st.session_state.data = process_files(uploaded_files)
+	if uploaded_files:
+	    if 'data' not in st.session_state or st.button('Process Statements'):
+		st.session_state.data = process_files(uploaded_files)
 	
 	with col2:
 		st.markdown("")
