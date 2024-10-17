@@ -330,54 +330,57 @@ st.markdown("")
 tab1, tab2, tab3 = st.tabs(["SELECT CARDS 💳", "UPLOAD INFO 📤", "DASHBOARD 📊"])
 graphs = False
 with tab1: 
-	with st.form("card_info_form"):
-		# Number of cards
-		num_cards = st.number_input("Enter the number of credit cards:", min_value=1, max_value=10, step=1, format='%d')
-		
-		# This will hold all the cards' information
-		cards_data = []
-		
-		# Ask details for each card
+	st.title("Credit Card Dashboard")
+
+	# Define the layout: 3 columns
+	col1, col2, col3 = st.columns(3)
+	
+	# Column 1: Number of cards input
+	with col1:
+		num_cards = st.number_input("Enter the number of credit cards:", min_value=1, max_value=10, step=1, value=1, key='num_cards')
+	
+	# Column 2: Dropdowns for selecting the bank
+	with col2:
+		banks_selected = []
 		for i in range(int(num_cards)):
-		    st.subheader(f"Card {i + 1}")
-		    # Bank of the card
-		    bank = st.selectbox("Select the bank of the card:",
-					options=["Bank of America", "Chase", "Wells Fargo", "CitiBank", "Other"],
-					key=f"bank_{i}")
-		    # Type of the card
-		    card_type = st.selectbox("Select the type of the card:",
-					     options=["Debit", "Credit", "Prepaid"],
-					     key=f"type_{i}")
+		    banks_selected.append(st.selectbox(f"Select the bank for card {i + 1}:",
+						       options=list(bank_cards.keys()),
+						       key=f"bank_{i}"))
+	
+	# Column 3: Dropdowns for selecting the card type based on selected bank
+	with col3:
+		cards_selected = []
+		for i in range(int(num_cards)):
+		    cards_selected.append(st.selectbox(f"Select the type for card {i + 1}:",
+						       options=bank_cards[banks_selected[i]],
+						       key=f"card_type_{i}"))
 		
-		    cards_data.append({"bank": bank, "type": card_type})
+		# Submit button
+		if st.button("Submit"):
+		st.write("Submitted Information:")
+		for i in range(int(num_cards)):
+		    st.write(f"Card {i + 1}: Bank - {banks_selected[i]}, Card Type - {cards_selected[i]}")
 		
-		# Submit button for the form
-		submitted = st.form_submit_button("Submit")
-		if submitted:
-		    st.write("Cards' Details Submitted:")
-		    for index, card in enumerate(cards_data, start=1):
-      			st.write(f"Card {index}: Bank - {card['bank']}, Type - {card['type']}")
-		
-with tab2: 
-    st.markdown("")
-    st.markdown("")
-    padA, col1, colA, col2, padB= st.columns([1,11,2,11,2])
-    with col1:
-        uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
-        
-        if uploaded_files:
-            if 'data' not in st.session_state or st.button('Process Statements'):
-                st.session_state.data = process_files(uploaded_files)
-    
-    with col2:
-        st.markdown("")
-        st.markdown("")
-        # Display and edit data using session state
-        if 'data' in st.session_state and not st.session_state.data.empty:
-            edited_data = st.data_editor(st.session_state.data, num_rows="dynamic", hide_index=True)
-        
-            if st.button('Generate Graphs'):
-                graphs = True
+	with tab2: 
+	st.markdown("")
+	st.markdown("")
+	padA, col1, colA, col2, padB= st.columns([1,11,2,11,2])
+	with col1:
+	uploaded_files = st.file_uploader("Upload PDF statements", accept_multiple_files=True, type='pdf')
+	
+	if uploaded_files:
+	    if 'data' not in st.session_state or st.button('Process Statements'):
+		st.session_state.data = process_files(uploaded_files)
+	
+	with col2:
+	st.markdown("")
+	st.markdown("")
+	# Display and edit data using session state
+	if 'data' in st.session_state and not st.session_state.data.empty:
+	    edited_data = st.data_editor(st.session_state.data, num_rows="dynamic", hide_index=True)
+	
+	    if st.button('Generate Graphs'):
+		graphs = True
 
         
 with tab3:
