@@ -329,7 +329,14 @@ st.markdown("")
 # Streamlit app
 tab1, tab2, tab3 = st.tabs(["SELECT CARDS 💳", "UPLOAD INFO 📤", "DASHBOARD 📊"])
 graphs = False
-with tab1: 
+with tab1:
+	bank_cards = {
+		"Banamex": ["Tarjeta Básica", "Tarjeta Oro", "Platinum Card"],
+		"BBVA Bancomer": ["Tarjeta Azul", "Tarjeta Oro", "Tarjeta Platinum"],
+		"Banorte": ["Tarjeta Clásica", "Tarjeta Oro", "Tarjeta Platinum"],
+		"Santander": ["Tarjeta Light", "Tarjeta Free", "Tarjeta Zero"],
+		"HSBC": ["Tarjeta Clásica", "Tarjeta Oro", "Tarjeta Platinum"]
+		}
 	st.title("Credit Card Dashboard")
 
 	# Define the layout: 3 columns
