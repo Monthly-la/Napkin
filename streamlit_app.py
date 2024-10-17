@@ -340,8 +340,6 @@ with tab1:
 		"Santander": ["Tarjeta Light", "Tarjeta Free", "Tarjeta Zero"],
 		"HSBC": ["Tarjeta Clásica", "Tarjeta Oro", "Tarjeta Platinum"]
 		}
-	st.title("Credit Card Dashboard")
-
 	# Define the layout: 3 columns
 	pad1, col1, pad2, col2, pad3, col3, pad4 = st.columns([1,4,1,4,1,4,1])
 	
