@@ -407,7 +407,6 @@ with tab1:
 		cards_selected = []
 		for i in range(int(num_cards)):
   			cards_selected.append(st.selectbox(f"Select the type for card {i + 1}:", options=bank_cards[banks_selected[i]], key=f"card_type_{i}"))
-     			st.text("")
 	     		
 		
 	# Submit button
