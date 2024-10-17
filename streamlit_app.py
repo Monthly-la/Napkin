@@ -356,7 +356,7 @@ with tab1:
 		if submitted:
 		    st.write("Cards' Details Submitted:")
 		    for index, card in enumerate(cards_data, start=1):
-			st.write(f"Card {index}: Bank - {card['bank']}, Type - {card['type']}")
+      			st.write(f"Card {index}: Bank - {card['bank']}, Type - {card['type']}")
 		
 with tab2: 
     st.markdown("")
